@@ -1,12 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from "redux";
+import rootReducer from './reducers/mainReducer';
 import './index.css';
-import App from './App';
+import App from './components/Main';
 import reportWebVitals from './reportWebVitals';
+
+
+let initialState = {
+	error:null, //holds ajax error text - if not null go to Spotify login
+	results:null, 
+	next_url: null, //paging url for albums,artists
+	prev_url: null, //paging url for albums,artists
+	next_tracks_url: null, //paging for tracks navigation - some albums have more than 50 results.
+	prev_tracks_url: null, //paging for tracks navigation
+  category:"all", //determines which collection component used
+  language: "en",
+  url: "projects.json"
+}
+
+
+//connect store
+let store = createStore(rootReducer,initialState);
 
 ReactDOM.render(
   <React.StrictMode>
+   <Provider store={store}>
     <App />
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

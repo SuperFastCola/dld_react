@@ -10,15 +10,23 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "noImplicitAny": false,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
+  },
+  "rules": {
+    "no-console": false,
+    "no-unused-vars": false,
+    "@typescript-eslint/no-unused-vars": [
+      "error"
+    ]
   },
   "include": [
     "src"
