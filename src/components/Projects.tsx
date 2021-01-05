@@ -2,10 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import rootReducer from "../reducers/mainReducer";
 import {sendAjaxRequest} from "../modules/sendAjaxRequest";
+import ProjectSquare from './ProjectSquare';    
 
 interface Properties {
     info:{
-        results:[],
+        results:any,
         error:null
     };
     setResults(any):void;
@@ -16,14 +17,29 @@ class Projects extends React.Component<Properties> {
 	constructor(props) {
 		super(props);
 		this.ajaxError = this.ajaxError.bind(this);
-	}
+    }
+    showEachSquare(){
+        
+    }
 	showProjects(){
+        
+        let squares = [];
+        if(this.props.info.results != null){
+             squares = this.props.info.results.projects.map((item,index) =>
+                <ProjectSquare key={index} item={item}/>
+            );
+        }
+
 		return (
-	    	<div>
-	    	<p>Projects</p>
-	    	</div>
+	    	<>
+	    	<div>Projects</div>
+            <div className="projectList">
+                {squares}
+            </div>
+	    	</>
 	    )
-	}
+    }
+    
 	ajaxError(jqXHR, textStatus){
 		this.props.setAjaxError(textStatus);
 	}
