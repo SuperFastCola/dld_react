@@ -6,10 +6,11 @@
     }
   }
   
-  export const addAlbumDetails = results => {
+  export const changeLanguage = language => {
+
     return {
-      type: 'ADD_ALBUM_DETAILS',
-      "results":results
+      type: 'SET_LANGUAGE',
+      "language":language
     }
   }
   

@@ -14,9 +14,8 @@ const initialState = {
          state = Object.assign({}, state, {results: action.results})
          return state;
        
-       case "ADD_ALBUM_DETAILS":
-         var new_results = Object.assign({}, state.results, {items: action.results.albums})
-         state = Object.assign({}, state, {results: new_results})
+       case "SET_LANGUAGE":
+         state = Object.assign({}, state, {language: action.language})
        return state;
    
        case "SET_TRACKS":

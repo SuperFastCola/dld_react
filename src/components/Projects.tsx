@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import rootReducer from "../reducers/mainReducer";
-import {sendAjaxRequest} from "../modules/sendAjaxRequest";
 import ProjectSquare from './ProjectSquare';    
 
 interface Properties {
@@ -33,7 +31,7 @@ class Projects extends React.Component<Properties> {
 		return (
 	    	<>
 	    	<div>Projects</div>
-            <div className="projectList">
+            <div className="projectList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-0.5 grid-flow-row-dense">
                 {squares}
             </div>
 	    	</>

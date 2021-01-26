@@ -1,854 +1,152 @@
 {
-"types":["about","all","front-end","back-end","print","design","illustration","artwork"],
-"contents":[
-	{
-		"type":["about"],
-		"body":"<p>Coming Soon</p>",
-		"contentFile": "resume.html"
-	}
-],
-"sprites":[
-	{
-		"yCoor": [0,0],
-		"xCoor": [[0,-166.5],[-167.5,-333]],
-		"parent_element":"portfolio_header",
-		"dimensions": [84,140],
-		"position":[0,14],
-		"sprite_type":"character",
-		"restart":false,
-		"walk_speed": ".1s",
-		"sprite_id": "bouncer"
-	},
-	{
-		"yCoor": [-141,-141],
-		"xCoor": [[0,-166.5],[-167.5,-333]],
-		"parent_element":"portfolio_header",
-		"dimensions": [84,140],
-		"position":[0,16],
-		"sprite_type":"character",
-		"restart":false,
-		"walk_speed": ".08s",
-		"sprite_id": "girl"
-	},
-	{
-		"yCoor": [-281,-281],
-		"xCoor": [[0,-166.5],[-167.5,-333]],
-		"parent_element":"portfolio_header",
-		"dimensions": [84,140],
-		"position":[0,18],
-		"sprite_type":"character",
-		"restart":false,
-		"walk_speed": ".07s",
-		"sprite_id": "dude"
-	},
-	{
-		"yCoor": [-421,-421],
-		"xCoor": [[0,-166.5],[-167.5,-333]],
-		"parent_element":"portfolio_header",
-		"dimensions": [84,140],
-		"position":[0,20],
-		"sprite_type":"character",
-		"restart":false,
-		"walk_speed": ".1s",
-		"sprite_id": "police"
-	},
-	{
-		"yCoor": [-561,-561],
-		"xCoor": [[0,-166.5],[-167.5,-333]],
-		"parent_element":"portfolio_header",
-		"dimensions": [84,140],
-		"position":[0,3],
-		"sprite_type":"character",
-		"restart":false,
-		"walk_speed": ".05s",
-		"sprite_id": "bird"
-	}
-],
-"projects":[
-	{
-		"name":"React/Redux with Spotify",
-		"description":"Framework Exploration with Spotify API",
-		"role":"Web Design, Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>React JS</li><li>Redux</li><li>Webpack</li><li>HTML 5</li><li>Responsive CSS</li></ul>",
-		"image":"reactredux_spotify.jpg",
-		"url": [{
-			"link":"http://reactredux.deluxeluxury.com/",
-			"text": "View Live Site"
+	"types":[
+		"all",
+		"front-end",
+		"back-end",
+		"print",
+		"design",
+		"illustration",
+		"artwork",
+		"art"
+	],
+	"contents":{
+			"en":
+			{
+				"type":["about"],
+				"body":"Coming Soon",
+				"contentFile": "resume.html"
 			},
+			"fr":
 			{
-			"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
-			"text":"View Essential Code"
-			},
-			{
-			"link":"https://github.com/SuperFastCola/tt-music-search/blob/master/app/sass/styles.scss",
-			"text":"View Essential SASS"
-			}],
-
-			
-		"id":"reactredux",
-		"type":["design,front-end"]
-	},
-	{
-		"name":"Sanders",
-		"description":"Comic Book Artwork (Ongoing)",
-		"role":"Illustration",
-		"image":"mister_sanders.jpg",
-		"type":["illustration"],
-		"id":"sanders"
-	},
-	{
-		"name":"Boutique Réunion",
-		"description":"Online Presence",
-		"role":"Web Design, Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>HTML 5</li><li>Angular 1.5</li><li>Responsive CSS</li></ul>",
-		"image":"boutique_reunion.jpg",
-		"url": [{
-			"link":"http://boutiquereunion.com/",
-			"text": "View Live Site"
-			},
-			{
-			"link":"https://github.com/SuperFastCola/boutiquereunion/blob/master/javascript/src/reunion.src.js",
-			"text":"View Essential Code"
-			},
-			{
-			"link":"https://github.com/SuperFastCola/boutiquereunion/blob/master/css/scss/reunion.styles.scss",
-			"text":"View Essential SASS"
-			}],
-
-			
-		"id":"reunion",
-		"type":["design,front-end"]
-	},
-	{
-		"name":"React JS Exploration",
-		"description":"Test Project to Explore Framework",
-		"role":"Web Design, Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>React JS</li><li>HTML 5</li><li>Responsive CSS</li></ul>",
-		"image":"reactjs_test.jpg",
-		"url": [{
-			"link":"http://reactjs.deluxeluxury.com/",
-			"text": "View Live Site"
-			},
-			{
-			"link":"https://github.com/SuperFastCola/reactjs-project/blob/master/app/components/main.js",
-			"text":"View Essential Code"
-			},
-			{
-			"link":"https://github.com/SuperFastCola/reactjs-project/blob/master/app/modules/styles.scss",
-			"text":"View Essential SASS"
-			}],
-
-			
-		"id":"react_test",
-		"type":["design,front-end"]
-	},
-	{
-		"name":"Main Street Theatre Tucker",
-		"description":"Second Samuel Performance Visuals",
-		"role":"Design and Illustration",
-		"image":"second_samuel_v15-01.jpg",
-		"type":["design","illustration","print"],
-		"id":"secondsamuel"
-	},
-	{
-		"name":"Animal Cruelty",
-		"description":"Personal Project",
-		"role":"Illustration",
-		"image":"animal_cruelty.jpg",
-		"type":["illustration","artwork"],
-		"id":"cruelty"
-	},
-	{
-		"name":"Teen Beach Beats",
-		"description":"Sound Mixing App",
-		"role":"Conceptual UX Design, Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>Javascript</li><li>HTML5 audio</li><li>Jquery</li><li>Responsive Web Development</li><li>CSS3</li></ul><ul><li>JSON</li><li>MySQL</li><li>PHP</li><li>Facebook Integration</li><li>Linux Administration</li></ul>",
-		"image":"teenbeach2.jpg",
-		"url": [{
-			"link":"http://teenbeach2.deluxeluxury.com/",
-			"text": "View Archived Site"
-			},
-			{
-				"link":"https://github.com/SuperFastCola/MusicManager/blob/master/MusicManager.js",
-				"text":"View Essential Code"
-			}],
-		"id":"teenbeach",
-		"type":["front-end"]
-	},
-	{
-		"name":"Fashion Police",
-		"description":"Social Quiz Sharing Minisite",
-		"role":"Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>Javascript</li><li>Jquery</li><li>Responsive Web Development</li><li>CSS3</li></ul><ul><li>JSON</li><li>MySQL</li><li>PHP</li><li>Facebook Integration</li><li>Linux Administration</li></ul>",
-		"image":"charter_fashion_police.jpg",
-		"url": [{
-			"link":"http://fashionpolice.deluxeluxury.com/",
-			"text": "View Archived Site"
-			}],
-		"id":"fashionpolice",
-		"type":["front-end","back-end"]
-	},
-	{
-		"name":"CNN en Español",
-		"description":"Multilingual B2C Sweepstakes Entry Minisite",
-		"role":"Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>NodeJS</li><li>DynamoDB</li><li>Javascript</li><li>Jquery</li></ul><ul><li>Responsive Web Development</li><li>CSS3</li><li>JSON<li></ul>",
-		"image":"cnnevodsweeps.jpg",
-		"id":"cnnesweeps",
-		"url": [{
-			"link":"https://github.com/SuperFastCola/node-site/blob/master/app.js",
-			"text":"View Essential Code"
-			}],
-		"type":["front-end","back-end"]
-	},
-	{
-		"name":"FYI Network",
-		"description":"B2C Quiz and Photo Manipulation Minisite",
-		"role":"Development and Deployment",
-		"tech":"<ul><li>Amazon Web Services</li><li>Javascript</li><li>Jquery</li><li>CSS3</li><li>JSON</li></ul><ul><li>MySQL</li><li>PHP</li><li>Facebook Integration</li><li>Linux Administration</li></ul>",
-		"image":"fyi_hyphenated_life.jpg",
-		"id":"fyi_2014",
-		"url": [{
-			"link":"https://github.com/SuperFastCola/facebook_processing_ajax/blob/master/fb_ajax.php#L988",
-			"text":"View Essential Code"
-		}],
-		"type":["front-end","back-end"]
-	},
-	{
-		"name":"NBCU Super Solution 2.0",
-		"description":"B2B Enrollment and Incentive Site",
-		"role":"Development",
-		"tech":"<ul><li>Javascript</li><li>Jquery</li><li>CSS3</li><li>JSON</li></ul><ul><li>MySQL</li><li>PHP</li><li>Linux Administration</li></ul>",
-		"image":"nbcu_2014.jpg",
-		"id":"nbcu_2014",
-		"type":["design","front-end","back-end"],
-		"url": [{
-			"link":"https://player.vimeo.com/video/91997026",
-			"text":"View Video"
-			}]
-	},
-	{
-		"name":"A Part of Something Big",
-		"description":"Logo Development",
-		"role":"Design and Illustration",
-		"type":["design","print"],
-		"image":"aposb_logo.jpg",
-		"url": [{
-			"link":"images/iapw_logodev.pdf",
-			"text":"View Logo Development"
-			}],
-		"id":"aposblogo"
-	},
-	{
-		"name":"The Lonely Missile",
-		"description":"iOS Application - Under Development",
-		"role":"Concept, Design, Illustration and Programming",
-		"tech":"Objective C",
-		"image":"lonely_missle.jpg",
-		"id":"missile",
-		"url": [{
-			"link":"https://github.com/SuperFastCola/Superfastapp/tree/master/SuperFastCola",
-			"text":"View Essential Code"
-			}],
-		"type":["design","mobile-development"]
-	},
-	{
-		"name":"HBO - Play the Boardwalk Game",
-		"description":"Online Sweepstakes Companion Piece",
-		"role":"Game Development and Integration",
-		"tech":"<ul><li>HTML5 Canvas</li><li>Request Animation Frame</li><li>CSS3</li></ul><ul><li>JSON</li><li>PHP</li></ul>",
-		"image":"playtheboardwalk.jpg",
-		"url": [{
-				"link":"http://boardwalk.deluxeluxury.com",
-				"text":"Play Game"
-			},
-			{
-				"link":"https://github.com/SuperFastCola/Ball-Thrower-Game-Code/blob/master/ballthrower.js",
-				"text":"View Essential Code"
-			},
-			{
-			"link":"https://player.vimeo.com/video/91887070",
-			"text":"View Video"
-			}],
-		"type":["front-end","back-end"],
-		"id":"playboardwalk"
-	},
-	{
-		"name":"G4TV",
-		"description":"Promotion Site",
-		"role":"Design",
-		"type":["design"],
-		"image":"g4_e3_2010_mock1.jpg",
-		"id":"design3"
-	},
-		{
-		"name":"ABC Family 25 Days of Christmas",
-		"description":"ActionScript Incentive Shopping Experience",
-		"role":"Design",
-		"image":"25doc_shop_landing_2010_v10.jpg",
-		"type":["design"],
-		"id":"abc252010"
-	},
-	{
-		"name":"Hallmark Channel",
-		"description":"Point of Purchase Sweepstakes Display",
-		"role":"Design",
-		"type":["design","print"],
-		"image":"living-it-up-with-martha-2011.jpg",
-		"id":"martha",
-		"url":[
-			{
-			"link":"https://player.vimeo.com/video/91886564",
-			"text":"View Video"
+				"type":["about"],
+				"body":"À bientôt",
+				"contentFile": "cv.html"
 			}
-		]
-	},
-	{
-		"name":"Hallmark Movie Channel",
-		"description":"Pop n' A Movie Logo Treatment",
-		"role":"Design",
-		"image":"hmc_sweetgift2012_bookpage_v06_mech-01.jpg",
-		"type":["design"],
-		"id":"sweetgift"
-	},
-	{
-		"name":"Turner Sports",
-		"description":"Flash Rich Media Style Guide - unpublished",
-		"role":"Design, Animation and Programming",
-		"tech":"Actionscript 2, PHP 4, CSS 2, HTML 4, Video and XML Feed Setup/Processing",
-		"image":"nba_digital2.jpg",
-		"url": [
-			{
-			"link":"https://player.vimeo.com/video/91886068",
-			"text":"View Video"
-			}],
-		"type":["design","front-end"],
-		"id":"nbcdigital"
-	},
-	{
-		"name":"TBS",
-		"description":"Flash Rich Media Banner Campaign",
-		"role":"Design, Animation and Programming",
-		"tech":"Actionscript 2 and XML Feed Setup/Processing",
-		"image":"mlb_postseason_2010.jpg",
-		"url": [{
-			"link":"http://mlb2010.deluxeluxury.com/",
-			"text":"View Archived Site"
-			},
-			{
-			"link":"https://player.vimeo.com/video/91886066",
-			"text":"View Video"
-			}],
-		"type":["front-end","design"],
-		"id":"mlbplayoffs"
-	},
-	{
-		"name":"USA - Who Am I Today?",
-		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
-		"role":"Development",
-		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
-		"image":"usa_who_am_i.jpg",
-		"type":["front-end","back-end"],
-		"id":"usawho",
-		"url": [
-			{
-			"link":"https://player.vimeo.com/video/91997024",
-			"text":"View Video"
-			}]
-	},
-	{
-		"name":"Turner Sports",
-		"description":"Flash Rich Media Banner Campaign.",
-		"role":"Design, Animation and Programming",
-		"tech":"Actionscript 2, Video and XML Feed Setup/Processing",
-		"image":"youtube_960x250_pg2-01.jpg",
-		"url": [{
-			"link":"http://youtubenba.deluxeluxury.com/",
-			"text":"View Flash Banner"
-			},
-			{
-			"link":"https://player.vimeo.com/video/91885853",
-			"text":"View Video"
-			}],
-		"type":["front-end", "design"],
-		"id":"tsyoutube"
-	},
-	{
-		"name":"HBO",
-		"description":"Mobile and Desktop HTML5 Photo Manipulation Application",
-		"role":"UX Design, Development Direction, Facebook Integration and Programming",
-		"tech":"Kinetic.js, HTML 5, CSS3, Facebook API, JSON integration and PHP",
-		"image":"cox_claim_the_throne.jpg",
-		"url": [{
-			"link":"https://player.vimeo.com/video/91887069",
-			"text":"View Video"
-			}],
-		"type":["front-end","design","back-end"],
-		"id":"hbothrone"
-	},
-	{
-		"name":"Turner Sports",
-		"description":"Quaterly Update Companion Web Site",
-		"role":"Design, Animation and Programming",
-		"tech":"Actionscript 2, CSS 2, HTML 4",
-		"image":"tnt_sportsletter.jpg",
-		"url": [{
-			"link":"http://sportsletter.deluxeluxury.com/",
-			"text":"View Archived Site"
-			}],
-		"type":["front-end", "design"],
-		"id":"tbsletter"
-	},
-	{
-		"name":"Spivey Hall",
-		"description":"Site Design",
-		"role":"Design",
-		"type":["design"],
-		"image":"spivey_hall_mock2.jpg",
-		"id":"design4"
-	},
-	{
-		"name":"Bell Canada",
-		"description":"Customer Portal Design",
-		"role":"Design",
-		"type":["design"],
-		"image":"bell_canada.jpg",
-		"id":"design5"
-	},
-	{
-		"name":"A Part of Something Big",
-		"description":"Catalog Mailer",
-		"role":"Design",
-		"type":["design","print"],
-		"image":"aposb_mailer_fall09_v11_pt4.jpg",
-		"url": [{
-			"link":"images/aposb_mailer_fall10.pdf",
-			"text": "View PDF Mailer"
-			}],
-		"id":"design7"
-	},
-	{
-		"name":"Big Ten Network",
-		"description":"Digital Billboard Campaign",
-		"role":"Design",
-		"image":"billboardmock_detroit.jpg",
-		"type":["design"],
-		"id":"bigtenbillboard"
-	},
-	{
-		"name":"Style Network",
-		"description":"Minisite Design",
-		"role":"Design",
-		"image":"style_ruby_landing_v3-01.jpg",
-		"type":["design"],
-		"id":"rubycity"
-	},	
-	{
-		"name":"Cox Communications",
-		"description":"Flash Facebook Application",
-		"role":"UX Design, Development Direction, Facebook Integration and Programming",
-		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
-		"image":"showtime_homeland_facebook_app.jpg",
-		"type":["front-end", "design","back-end"],
-		"url": [{
-			"link":"https://player.vimeo.com/video/90499801",
-			"text":"View Video"
-		}],
-		"id":"homeland"	
-	},
-	{
-		"name":"A Part of Something Big",
-		"description":"E-Commerce Site Design",
-		"role":"Design and Illustration",
-		"type":["design"],
-		"image":"iapw_store_home_v5.jpg",
-		"id":"design1"
-	},
-	{
-		"name":"MyButler.com",
-		"description":"E-Commerce Portal Design",
-		"role":"Design and Illustration",
-		"type":["design"],
-		"image":"intermarche_final_comp2.jpg",
-		"id":"design2"
-	},
-	{
-		"name":"Main Street Theatre Tucker",
-		"description":"Logo Development",
-		"role":"Design",
-		"type":["design","print"],
-		"image":"mstt_logo.jpg",
-		"id":"design_mstt"
-	},
-	{
-		"name":"MMA Independent",
-		"description":"Logo Development",
-		"role":"Design",
-		"type":["design","print"],
-		"image":"mma_logo.jpg",
-		"id":"design_mma"
-	},
-	{
-		"name":"G4 Tv",
-		"description":"Flash video site with HTML 5 video fallback.",
-		"role":"Design, Development and Integration",
-		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
-		"image":"g4e3allaccess2011.jpg",
-		"url": [
-			{
-			"link":"https://player.vimeo.com/video/91885248",
-			"text":"View Video"
-			}],
-		"type":["front-end","design","back-end"],
-		"id":"e3allaccess"
-	},
-	{
-		"name":"TLC - Randy to the Rescue",
-		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
-		"role":"Development",
-		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
-		"image":"rttr.jpg",
-		"url": [
-			{
-			"link":"https://player.vimeo.com/video/91997025",
-			"text":"View Video"
-			}],
-		"type":["front-end","back-end"],
-		"id":"randyrescue"
-	},
-	{
-		"name":"Personal",
-		"image":"haunted_house.jpg",
-		"type":["illustration"],
-		"id":"illo11"
-	},
-	{
-		"name":"Pearson Longman",
-		"image":"bad_school.jpg",
-		"type":["illustration"],
-		"id":"illo1"
-	},
-	{
-		"name":"Personal",
-		"image":"business_is_good.jpg",
-		"type":["illustration"],
-		"id":"illo2"
-	},
-	{
-		"name":"MyButler.com",
-		"image":"bw_clips.jpg",
-		"type":["illustration"],
-		"id":"illo3"
-	},
-	{
-		"name":"Personal",
-		"image":"casino.jpg",
-		"type":["illustration"],
-		"id":"illo4"
-	},
-	{
-		"name":"Solo Communications",
-		"description":"Website Design and illustration",
-		"image":"cqit.jpg",
-		"type":["illustration"],
-		"id":"illo5"
-	},
-	{
-		"name":"MyButler.com",
-		"image":"disco_burt.jpg",
-		"type":["illustration"],
-		"id":"illo6"
-	},
-	{
-		"name":"Pearson Longman",
-		"image":"final_doctor_spotfinal.jpg",
-		"type":["illustration"],
-		"id":"illo7"
-	},
-	{
-		"name":"La Presse",
-		"image":"final_jour_famille.jpg",
-		"type":["illustration"],
-		"id":"illo8"
-	},
-	{
-		"name":"La Presse",
-		"image":"final_retraite_femme2.jpg",
-		"type":["illustration"],
-		"id":"illo9"
-	},
-	{
-		"name":"Personal",
-		"image":"girl_cafe4.jpg",
-		"type":["illustration"],
-		"id":"illo10"
-	},
-	{
-		"name":"Personal",
-		"image":"highway.jpg",
-		"type":["illustration"],
-		"id":"illo12"
-	},
-	{
-		"name":"Pearson Longman",
-		"image":"kids_fighting.jpg",
-		"type":["illustration"],
-		"id":"illo13"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_anywhere.jpg",
-		"type":["illustration"],
-		"id":"illo14"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_dealer.jpg",
-		"type":["illustration"],
-		"id":"illo15"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_identite_vol.jpg",
-		"type":["illustration"],
-		"id":"illo16"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_maison_cher.jpg",
-		"type":["illustration"],
-		"id":"illo17"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_moving.jpg",
-		"type":["illustration"],
-		"id":"illo18"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_surrendette_4.jpg",
-		"type":["illustration"],
-		"id":"illo19"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_trop_assure.jpg",
-		"type":["illustration"],
-		"id":"illo20"
-	},
-	{
-		"name":"La Presse",
-		"image":"last_valeur.jpg",
-		"type":["illustration"],
-		"id":"illo21"
-	},
-	{
-		"name":"Solo Communications",
-		"image":"lecavalier_transport.jpg",
-		"type":["illustration"],
-		"id":"illo22"
-	},
-	{
-		"name":"Personal",
-		"image":"lonely_missle.jpg",
-		"type":["illustration"],
-		"id":"illo23"
-	},
-	{
-		"name":"Montreal Choppers",
-		"image":"montreal_choppers.jpg",
-		"type":["illustration"],
-		"id":"illo24"
-	},
-	{
-		"name":"Personal",
-		"image":"taxes3.jpg",
-		"type":["illustration"],
-		"id":"illo25"
-	},
+		}
+	,
+	"sprites":[
 		{
-		"name":"Historical Abstract of the USA",
-		"image":"abstract.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink with digital manipulation",
-		"id":"artwork1"
-	},
-	{
-		"name":"January 16, 1991",
-		"image":"mcdonalds.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink ",
-		"id":"artwork31"
-	},
-	{
-		"name":"The Antidote",
-		"image":"antidote.jpg",
-		"type":["artwork"],
-		"description": "Watercolor with pen and ink ",
-		"id":"artwork2"
-	},
-	{
-		"name":"Business is Good",
-		"image":"businessisgood.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork4"
-	},
-	{
-		"name":"Cafe 2fux",
-		"image":"cafe.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork5"
-	},
-	{
-		"name":"Funeral",
-		"image":"funeral.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork8"
-	},
-	{
-		"name":"Fourth of July",
-		"image":"happy_4th.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink with digital manipulation",
-		"id":"artwork9"
-	},
-	{
-		"name":"Happy Town Highways",
-		"image":"highways.jpg",
-		"type":["artwork"],
-		"description": "Silk screen",
-		"id":"artwork10"
-	},
-	{
-		"name":"Keep off the Grass While You Wait",
-		"image":"keep_off_the_grass.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink with digital manipulation",
-		"id":"artwork11"
-	},
-	{
-		"name":"Le Bloc",
-		"image":"lebloc.jpg",
-		"type":["artwork"],
-		"description": "Acrylic",
-		"id":"artwork12"
-	},
-	{
-		"name":"Liberation",
-		"image":"liberation.jpg",
-		"type":["artwork"],
-		"description": "Silk screen",
-		"id":"artwork13"
-	},
-	{
-		"name":"Lovers",
-		"image":"lovers.jpg",
-		"type":["artwork"],
-		"description": "Acrylic",
-		"id":"artwork14"
-	},
-	{
-		"name":"Lovers Observed",
-		"image":"lovers2.jpg",
-		"type":["artwork"],
-		"description": "Watercolor with pen and ink ",
-		"id":"artwork15"
-	},
-	{
-		"name":"Mega Monsters",
-		"image":"megamonsters.jpg",
-		"type":["artwork"],
-		"description": "Acrylic",
-		"id":"artwork17"
-	},
-	{
-		"name":"The Air We Breath",
-		"image":"oilbaron.jpg",
-		"type":["artwork"],
-		"description": "Silk screen",
-		"id":"artwork18"
-	},
-	{
-		"name":"Rudy Speaks",
-		"image":"peacerally.jpg",
-		"type":["artwork"],
-		"description": "Silk screen",
-		"id":"artwork19"
-	},
-	{
-		"name":"Rue Mont Royal 1",
-		"image":"ruemontroyal1.jpg",
-		"type":["artwork"],
-		"description": "Watercolor with pen and ink ",
-		"id":"artwork20"
-	},
-	{
-		"name":"Rue Mont Royal 2",
-		"image":"ruemontroyal2.jpg",
-		"type":["artwork"],
-		"description": "Watercolor with pen and ink ",
-		"id":"artwork21"
-	},
-	{
-		"name":"Speed Devil",
-		"image":"speeddevil.jpg",
-		"type":["artwork"],
-		"description": "Acrylic",
-		"id":"artwork23"
-	},
-	{
-		"name":"State of the Union",
-		"image":"stateoftheunion.jpg",
-		"type":["artwork"],
-		"description": "Silk screen",
-		"id":"artwork24"
-	},
-	{
-		"name":"Super Boxers",
-		"image":"superboxing.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork25"
-	},
-	{
-		"name":"The In-Crowd",
-		"image":"thecrowd.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink wash",
-		"id":"artwork26"
-	},
-	{
-		"name":"The Only Way",
-		"image":"theonlyway.jpg",
-		"type":["artwork"],
-		"description": "Watercolor with pen and ink ",
-		"id":"artwork27"
-	},
-	{
-		"name":"USA Number 1",
-		"image":"usa1.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork28"
-	},
-	{
-		"name":"Your Vote Counts",
-		"image":"vote.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink with digital manipulation",
-		"id":"artwork29"
-	},
-	{
-		"name":"Warheads",
-		"image":"warheads.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork30"
+			"yCoor": [0,0],
+			"xCoor": [[0,-166.5],[-167.5,-333]],
+			"parent_element":"portfolio_header",
+			"dimensions": [84,140],
+			"position":[0,14],
+			"sprite_type":"character",
+			"restart":false,
+			"walk_speed": ".1s",
+			"sprite_id": "bouncer"
+		},
+		{
+			"yCoor": [-141,-141],
+			"xCoor": [[0,-166.5],[-167.5,-333]],
+			"parent_element":"portfolio_header",
+			"dimensions": [84,140],
+			"position":[0,16],
+			"sprite_type":"character",
+			"restart":false,
+			"walk_speed": ".08s",
+			"sprite_id": "girl"
+		},
+		{
+			"yCoor": [-281,-281],
+			"xCoor": [[0,-166.5],[-167.5,-333]],
+			"parent_element":"portfolio_header",
+			"dimensions": [84,140],
+			"position":[0,18],
+			"sprite_type":"character",
+			"restart":false,
+			"walk_speed": ".07s",
+			"sprite_id": "dude"
+		},
+		{
+			"yCoor": [-421,-421],
+			"xCoor": [[0,-166.5],[-167.5,-333]],
+			"parent_element":"portfolio_header",
+			"dimensions": [84,140],
+			"position":[0,20],
+			"sprite_type":"character",
+			"restart":false,
+			"walk_speed": ".1s",
+			"sprite_id": "police"
+		},
+		{
+			"yCoor": [-561,-561],
+			"xCoor": [[0,-166.5],[-167.5,-333]],
+			"parent_element":"portfolio_header",
+			"dimensions": [84,140],
+			"position":[0,3],
+			"sprite_type":"character",
+			"restart":false,
+			"walk_speed": ".05s",
+			"sprite_id": "bird"
+		}
+	],
+	"projects":[
+		{
+			"name":
+				{
+					"en":"React/Redux with Spotify",
+					"fr":"React/Redux avec Spotify"
+				},
+			"description":
+				{
+					"en":"Framework Exploration with Spotify API",
+					"fr":"Exploration ReaactJs avec API Spotify"
+				},
+			"role":
+				{
+					"en":"Web Design, Development and Deployment",
+					"fr":"Web Design, Development and Deployment"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services","React JS","Redux","Webpack","HTML 5","Responsive CSS"
+						],
+					"fr":[
+							"Amazon Web Services","React JS","Redux","Webpack","HTML 5","Responsive CSS"
+					]
+				},
+			"image":
+				{ 
+					"en":"reactredux_spotify.jpg",
+					"fr":"reactredux_spotify.jpg"
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
+							"text":"Essential Code"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/blob/master/app/sass/styles.scss",
+							"text":"Essential SASS"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
+							"text":"Code essentiel"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/blob/master/app/sass/styles.scss",
+							"text":"SASS essentiel"
+						}
+					]
+				},
+	
+			"id":"reactredux",
+			"type":["design,front-end"]
+		}
+	]
 	}
-
-]
-}

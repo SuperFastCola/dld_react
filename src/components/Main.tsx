@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import rootReducer from "../reducers/mainReducer";
 import {sendAjaxRequest} from "../modules/sendAjaxRequest";
+import Language from './Language';
 import ProjectsList from './Projects';
 
 interface Properties {
     info:{
         url:null,
+        language:string,
         error:null,
         token: null
     };
@@ -26,6 +27,7 @@ class App extends React.Component<Properties> {
 	showApp(){
 		return (
 	    	<>
+            <Language/>
 	    	<ProjectsList/>
 	    	</>
 	    )
