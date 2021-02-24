@@ -20,7 +20,7 @@ class Language extends React.Component<Properties, State> {
     }
     setLanguage(e) {
         e.preventDefault();
-        if(this.props.info.language=="en"){
+        if(this.props.info.language==="en"){
             this.props.changeLanguage("fr");
             this.setState({label:"English"});
         }
@@ -30,7 +30,7 @@ class Language extends React.Component<Properties, State> {
         }
     }
     setLabel(){
-        if(this.props.info.language=="en"){
+        if(this.props.info.language==="en"){
             return "Français";
         }
         return "English";

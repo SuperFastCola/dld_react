@@ -17,6 +17,7 @@ let initialState = {
 	prev_tracks_url: null, //paging for tracks navigation
   category:"all", //determines which collection component used
   language: "en",
+  selected_item: null,
   url: "projects.json"
 }
 

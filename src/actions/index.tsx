@@ -14,6 +14,13 @@
     }
   }
   
+  export const setSelectedItem = object => {
+    return {
+      type: 'SELECTED_ITEM',
+      "selected_item":object
+    }
+  }
+
   export const setTracks = tracks => {
     return {
       type: 'SET_TRACKS',
@@ -28,12 +35,7 @@
     }
   }
   
-  export const setArtist = object => {
-    return {
-      type: 'SET_ARTIST',
-      "artist":object
-    }
-  }
+ 
   
   export const setCategory = category => {
     return {

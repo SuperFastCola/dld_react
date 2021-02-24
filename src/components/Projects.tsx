@@ -14,17 +14,14 @@ interface Properties {
 class Projects extends React.Component<Properties> {
 	constructor(props) {
 		super(props);
-		this.ajaxError = this.ajaxError.bind(this);
-    }
-    showEachSquare(){
-        
+        this.ajaxError = this.ajaxError.bind(this);
     }
 	showProjects(){
         
         let squares = [];
         if(this.props.info.results != null){
              squares = this.props.info.results.projects.map((item,index) =>
-                <ProjectSquare key={index} item={item}/>
+                <ProjectSquare key={index} item={item} />
             );
         }
 

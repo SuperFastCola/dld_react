@@ -18,8 +18,8 @@ const initialState = {
          state = Object.assign({}, state, {language: action.language})
        return state;
    
-       case "SET_TRACKS":
-         state = Object.assign({}, state, {selected_tracks: action.tracks})
+       case "SELECTED_ITEM":
+         state = Object.assign({}, state, {selected_item: action.selected_item});
        return state;
    
         case "SET_AJAX_ERROR":
