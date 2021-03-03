@@ -24,6 +24,20 @@
 			}
 		}
 	,
+	"labels":{
+		"role":{
+			"en":"Role",
+			"fr":"Mandat"
+		},
+		"description":{
+			"en":"Description",
+			"fr":"Description"
+		},
+		"tech":{
+			"en":"Technology",
+			"fr":"Technologie"
+		}
+	},
 	"sprites":[
 		{
 			"yCoor": [0,0],
@@ -109,8 +123,17 @@
 				},
 			"image":
 				{ 
-					"en":"reactredux_spotify.jpg",
-					"fr":"reactredux_spotify.jpg"
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
 				},
 			"url": 
 				{

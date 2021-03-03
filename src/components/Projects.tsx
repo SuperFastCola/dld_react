@@ -4,6 +4,7 @@ import ProjectSquare from './ProjectSquare';
 
 interface Properties {
     info:{
+        selected_item:any,
         results:any,
         error:null
     };
@@ -26,12 +27,12 @@ class Projects extends React.Component<Properties> {
         }
 
 		return (
-	    	<>
-	    	<div>Projects</div>
+	    	<section className="projects">
+	    	<h1>Projects</h1>
             <div className="projectList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-0.5 grid-flow-row-dense">
                 {squares}
             </div>
-	    	</>
+	    	</section>
 	    )
     }
     
@@ -39,7 +40,11 @@ class Projects extends React.Component<Properties> {
 		this.props.setAjaxError(textStatus);
 	}
 	render() {
-	    return this.showProjects();
+        if(this.props.info.selected_item==null){
+            return this.showProjects();
+        }
+        return false;
+	    
   }
 }
 

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {sendAjaxRequest} from "../modules/sendAjaxRequest";
 import Language from './Language';
 import ProjectsList from './Projects';
+import ProjectDetails from './ProjectDetails';
 
 interface Properties {
     info:{
@@ -24,11 +25,16 @@ class App extends React.Component<Properties> {
 			sendAjaxRequest(this.props.info.url,this.props.setResults,this.ajaxError);
 	}
 
+	showProjectDetails(){
+		
+	}
+
 	showApp(){
 		return (
 	    	<>
             <Language/>
 	    	<ProjectsList/>
+			<ProjectDetails/>
 	    	</>
 	    )
 	}

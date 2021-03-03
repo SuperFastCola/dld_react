@@ -18,6 +18,7 @@ let initialState = {
   category:"all", //determines which collection component used
   language: "en",
   selected_item: null,
+  assetPath: "images/",
   url: "projects.json"
 }
 
