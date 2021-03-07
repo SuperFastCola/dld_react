@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {sendAjaxRequest} from "../modules/sendAjaxRequest";
 import Language from './Language';
+import "./Main.scss";
 import ProjectsList from './Projects';
 import ProjectDetails from './ProjectDetails';
 

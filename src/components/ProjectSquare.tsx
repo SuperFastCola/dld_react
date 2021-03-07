@@ -18,8 +18,8 @@ class ProjectSquare extends React.Component<Properties> {
 	}
 	showProject(){
 		return (
-	    	<article className="flex items-end justify-center box-border h-48 bg-gray-300 transition-all" onClick={()=>this.toggleSquares(this.props.item)}>
-	    	    <div className="w-full font-sans bg-gray-100  bg-opacity-50" >
+	    	<article className="projectSquare" onClick={()=>this.toggleSquares(this.props.item)}>
+	    	    <div className="ProjectSquare-title" >
                     {this.props.item.name[this.props.info.language]}  
                 </div>
 	    	</article>

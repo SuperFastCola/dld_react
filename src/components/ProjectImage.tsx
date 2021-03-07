@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 
 interface Properties {
     source: {
@@ -21,7 +21,6 @@ class ProjectImage extends React.Component<Properties> {
 
         var sources = Object.entries(this.props.source);
 
-        console.log(sources);
         return (
 	    	<picture className="projectImage">
                 {sources.map((src, index) => (<source srcSet={this.props.path + src[1]} media={breakpoints[src[0]]} key={index} /> ))} 
