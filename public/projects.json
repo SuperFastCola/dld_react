@@ -1,13 +1,29 @@
 {
 	"types":[
-		"all",
-		"front-end",
-		"back-end",
-		"print",
-		"design",
-		"illustration",
-		"artwork",
-		"art"
+		{
+			"en":"all",
+			"fr":"tous"
+		},
+		{
+			"en":"front-end",
+			"fr":"front-end"
+		},
+		{
+			"en":"back-end",
+			"fr":"back-end"
+		},
+		{
+			"en":"print",
+			"fr":"imprimé"
+		},
+		{
+			"en":"design",
+			"fr":"design"
+		},
+		{
+			"en":"illustration",
+			"fr":"illustration"
+		}
 	],
 	"contents":{
 			"en":

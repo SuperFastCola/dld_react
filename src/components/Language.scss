@@ -1,0 +1,14 @@
+@import "vendor/bootstrap/scss/bootstrap-utilities";
+
+.languageButton{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid $gray-300;
+    padding-bottom: map-get($spacers,2);
+    margin-bottom: map-get($spacers,3);
+    .btn{
+        &.language{
+            padding: 0;
+        }
+    }
+}

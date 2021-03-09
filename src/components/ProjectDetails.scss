@@ -1,14 +1,35 @@
+@import "vendor/bootstrap/scss/bootstrap-utilities";
+
 .projectDetails{
+
+    .projectClose{
+        display: flex;
+        align-items: center;
+        h1{
+            flex: 1 1 100%;
+            margin: map-get($spacers,3) 0;
+        }
+
+    }
+    
+    
 
     .projectHolder{
         display: flex;
         flex-direction: row;
     
         .projectImage{
+            flex: 1 1 60%;
 
+            img{
+                display: block;
+                width: 100%;
+            }
         }
         .projectDescription{
-    
+            flex: 1 1 40%;
+            padding: 0 map-get($spacers,4);
+
         }
     }
 }

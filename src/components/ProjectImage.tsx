@@ -22,7 +22,7 @@ class ProjectImage extends React.Component<Properties> {
         var sources = Object.entries(this.props.source);
 
         return (
-	    	<picture className="projectImage">
+	    	<picture>
                 {sources.map((src, index) => (<source srcSet={this.props.path + src[1]} media={breakpoints[src[0]]} key={index} /> ))} 
                 <img src={this.props.path + this.props.source.lg} alt={this.props.text} />
 	    	</picture>

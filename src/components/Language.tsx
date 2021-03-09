@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Language.scss";
 import {connect} from 'react-redux';
 
 interface Properties {
@@ -37,9 +38,9 @@ class Language extends React.Component<Properties, State> {
     }
 	showLanguage(){
 		return (
-	    	<>
-            <button onClick={this.setLanguage}>{this.setLabel()}</button>
-            </>
+	    	<div className="languageButton">
+            <button className="btn language" onClick={this.setLanguage}>{this.setLabel()}</button>
+            </div>
 	    )
     }
 	render() {

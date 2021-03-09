@@ -18,28 +18,58 @@ class ProjectDetails extends React.Component<Properties> {
 
     closeDetails(){
 		this.props.setSelectedItem(null);
-	}
+    }
+    
+    showItem(item,key){
+        var lang = this.props.info.language;
+        var labels = this.props.info.results.labels;
+
+        if(typeof item[key][lang] != "undefined"){
+
+            if(key==="tech"){
+                return(
+                    <>
+                        <h3>{labels[key][lang]}</h3>
+                        <ul>
+                            {item[key][lang].map((tech, index) => (<li key={index}>{tech}</li>))} 
+                        </ul>
+                    </>
+                )
+            }
+            else{
+                return(
+                    <>
+                        <h3>{labels[key][lang]}</h3>
+                        <p>{item[key][lang]}</p>
+                    </>
+                )
+            }
+            
+        }
+        
+        return null;
+    }
 
     showProjectDetails() {
         var project = this.props.info.selected_item;
         var lang = this.props.info.language;
-        var labels = this.props.info.results.labels;
+
         return (
             <section className="projectDetails">
-                <button type="button" className="btn-close" aria-label="Close" onClick={()=>this.closeDetails()}></button>
-                <h1>{project.name[lang]}</h1>
+                <div className="projectClose">
+                    <h1>{project.name[lang]}</h1>
+                    <button type="button" className="btn-close" aria-label="Close" onClick={()=>this.closeDetails()}></button>
+                </div>
+
                 <div className="projectHolder">
                     <div className="projectImage">
                         <ProjectImage source={project.image[lang]} text={project.name[lang]} path={this.props.info.assetPath} />
                     </div>
 
                     <div className="projectDescription">
-                        <h3>{labels.description[lang]}</h3>
-                        <p>{project.description[lang]}</p>
-                        <h3>{labels.role[lang]}</h3>
-                        <p>{project.role[lang]}</p>
-                        <h3>{labels.tech[lang]}</h3>
-                        <p>{project.tech[lang]}</p>
+                        {this.showItem(project,"description")}
+                        {this.showItem(project,"role")}
+                        {this.showItem(project,"tech")}                        
                     </div>
                 </div>
             </section>
@@ -50,7 +80,7 @@ class ProjectDetails extends React.Component<Properties> {
         if (this.displayProject()) {
             return this.showProjectDetails();
         }
-        return false;
+        return null;
     }
 }
 

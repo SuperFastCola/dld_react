@@ -3,4 +3,5 @@
 html,body{
     font-family: 'Shippori Mincho B1', serif;
     font-size: 16px;
+    padding: map-get($spacers,3);
 }
