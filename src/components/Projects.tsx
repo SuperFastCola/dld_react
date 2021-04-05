@@ -6,7 +6,8 @@ interface Properties {
     info:{
         selected_item:any,
         results:any,
-        error:null
+        error:null,
+        language:string
     };
     setResults(any):void;
     setAjaxError(any):void;
@@ -28,7 +29,7 @@ class Projects extends React.Component<Properties> {
 
 		return (
 	    	<section className="projects">
-	    	<h1>Projects</h1>
+	    	<h1>{this.props.info.results.labels.projects[this.props.info.language]}</h1>
             <div className="projectList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-0.5 grid-flow-row-dense">
                 {squares}
             </div>
