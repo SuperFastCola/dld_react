@@ -10,6 +10,7 @@ interface Properties {
     info:{
         url:null,
         language:string,
+		results: any,
         error:null,
         token: null
     };
@@ -31,13 +32,20 @@ class App extends React.Component<Properties> {
 	}
 
 	showApp(){
-		return (
-	    	<>
-            <Language/>
-	    	<ProjectsList/>
-			<ProjectDetails/>
-	    	</>
-	    )
+		if(this.props.info.results!=null){
+			return (
+				<>
+				<Language/>
+				<ProjectsList/>
+				<ProjectDetails/>
+				</>
+			)
+		}
+		else{
+			return (
+				<div className="loading"></div>
+			);
+		}
 	}
 	ajaxError(jqXHR, textStatus){
 		this.props.setAjaxError(textStatus);

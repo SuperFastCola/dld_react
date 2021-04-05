@@ -1,7 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&family=Shippori+Mincho+B1:wght@400;700&display=swap');
-@import "vendor/bootstrap/scss/bootstrap";
+@import "../vendor/bootstrap/scss/bootstrap";
 html,body{
     font-family: 'Shippori Mincho B1', serif;
     font-size: 16px;
     padding: map-get($spacers,3);
+}
+
+@keyframes loadingAnimation {
+    10%{
+        content: "-";
+    }
+    20%{
+        content: "--";
+    }
+    30%{
+        content: "---";
+    }
+    40%{
+        content: "----";
+    }
+    50%{
+        content: "-----";
+    }
+    60%{
+        content: "------";
+    }
+    70%{
+        content: "-------";
+    }
+    80%{
+        content: "--------";
+    }
+    90%{
+        content: "--------";
+    }
+    100%{
+        content: "---------";
+    }
+    
+}
+
+
+.loading{
+    &::after{
+        content:"";
+        display: block;
+        animation-name: loadingAnimation;
+        animation-duration: .2s;
+        animation-iteration-count: infinite;
+    }
 }
