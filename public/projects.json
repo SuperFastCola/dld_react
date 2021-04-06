@@ -1,28 +1,41 @@
 {
 	"types":[
-		{
-			"en":"all",
-			"fr":"tous"
+		{"all":
+			{
+				"en":"all",
+				"fr":"tous"
+			}
+		},
+		{"front-end":
+			{
+				"en":"front-end",
+				"fr":"front-end"
+			}
+		},
+		{"back-end":
+			{
+				"en":"back-end",
+				"fr":"back-end"
+			}
+		},
+		{"print":
+			{
+				"en":"print",
+				"fr":"imprimé"
+			}
+		},
+		{"design":
+			{
+				"en":"design",
+				"fr":"design"
+			}
 		},
 		{
-			"en":"front-end",
-			"fr":"front-end"
-		},
-		{
-			"en":"back-end",
-			"fr":"back-end"
-		},
-		{
-			"en":"print",
-			"fr":"imprimé"
-		},
-		{
-			"en":"design",
-			"fr":"design"
-		},
-		{
-			"en":"illustration",
-			"fr":"illustration"
+			"illo":
+			{
+				"en":"illustration",
+				"fr":"illustration"
+			}
 		}
 	],
 	"contents":{

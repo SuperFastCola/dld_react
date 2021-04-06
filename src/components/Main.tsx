@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {sendAjaxRequest} from "../modules/sendAjaxRequest";
 import Language from './Language';
 import "./Main.scss";
+import Navigation from './Navigation';
 import ProjectsList from './Projects';
 import ProjectDetails from './ProjectDetails';
 
@@ -35,6 +36,7 @@ class App extends React.Component<Properties> {
 		if(this.props.info.results!=null){
 			return (
 				<>
+				<Navigation/>
 				<Language/>
 				<ProjectsList/>
 				<ProjectDetails/>
