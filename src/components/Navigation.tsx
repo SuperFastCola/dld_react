@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Navigation.scss";
 import {connect} from 'react-redux';
+import NavigationLink from "./NavigationLink";
 
 interface Properties {
     info:{
@@ -9,39 +10,25 @@ interface Properties {
     };
 };
 
-interface State { 
-    navitems: any;
-};
-
-class Language extends React.Component<Properties, State> {   
+class Navigation extends React.Component<Properties> {   
     constructor(props){
         super(props);
-        this.AssembleNavigation = this.AssembleNavigation.bind(this);
         this.setState({navitems:null});
     }
-    componentDidMount() {
-        this.AssembleNavigation();
-    }
-    AssembleNavigation(){
-        let navItems = [];
+   	render() {
+        var navItems = [];
         if(this.props.info.results.types != null){
             navItems = this.props.info.results.types.map((item,index) =>
-                <div key={index}>{item}</div>
+            <NavigationLink key={index} text={item[this.props.info.language]} type={item.type}/>
             );
         }
-        this.setState({navitems:navItems})
-    }
-   	render() {
-        console.log(this.state);
+        
+        console.log(navItems);
         
         return(
-            <>
-            {
-              this.props.info.results.types.map((item,index) =>
-                <div key={index}>{item}</div>
-                )
-            }    
-            </>
+            <div className="navigation">
+            {navItems}    
+            </div>
         )
         
 	    
@@ -61,4 +48,4 @@ const mapStateToProps = function(state){
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Language)
+export default connect(mapStateToProps,mapDispatchToProps)(Navigation)
