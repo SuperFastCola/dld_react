@@ -12,13 +12,10 @@ interface Properties {
 };
 
 class NavigationLink extends React.Component<Properties> {   
-    constructor(props){
-        super(props);
-    }
    	render() {
            console.log(this);
         return(
-            <a className="navigationLink" key={this.props.key} data-type={this.props.type}>{this.props.text}</a>
+            <button className="navigationLink" key={this.props.key} data-type={this.props.type}>{this.props.text}</button>
         )
   }
 }

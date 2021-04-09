@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {sendAjaxRequest} from "../modules/sendAjaxRequest";
-import Language from './Language';
 import "./Main.scss";
 import Navigation from './Navigation';
 import ProjectsList from './Projects';
@@ -37,7 +36,6 @@ class App extends React.Component<Properties> {
 			return (
 				<>
 				<Navigation/>
-				<Language/>
 				<ProjectsList/>
 				<ProjectDetails/>
 				</>

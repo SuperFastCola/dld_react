@@ -1,5 +1,12 @@
 .navigation{
     position: sticky;
     position: -webkit-sticky;
-    top: 0;;
+    top: 0;
+
+    display: flex;
+
+    button{
+        background: none;
+        border: 0px;
+    }
 }

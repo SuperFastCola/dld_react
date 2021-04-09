@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Navigation.scss";
 import {connect} from 'react-redux';
+import Language from './Language';
 import NavigationLink from "./NavigationLink";
 
 interface Properties {
@@ -28,6 +29,7 @@ class Navigation extends React.Component<Properties> {
         return(
             <div className="navigation">
             {navItems}    
+            <Language/>
             </div>
         )
         
