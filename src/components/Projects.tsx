@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import "./Projects.scss";
 import ProjectSquare from './ProjectSquare';    
 
 interface Properties {

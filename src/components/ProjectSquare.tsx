@@ -1,4 +1,5 @@
 import React from 'react';
+import "./ProjectSquare.scss";
 import {connect} from 'react-redux';
 
 interface Properties {
@@ -19,7 +20,7 @@ class ProjectSquare extends React.Component<Properties> {
 	showProject(){
 		return (
 	    	<article className="projectSquare" onClick={()=>this.toggleSquares(this.props.item)}>
-	    	    <div className="ProjectSquare-title" >
+	    	    <div className="projectSquare-title" >
                     {this.props.item.name[this.props.info.language]}  
                 </div>
 	    	</article>

@@ -1,0 +1,31 @@
+@import "../vendor/bootstrap/scss/bootstrap-utilities";
+
+.projectSquare{
+ 
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-height: 250px;
+    border: 1px solid red;
+
+    @include media-breakpoint-up(sm){
+        flex: 0 0 33.3%;
+        border: 1px solid yellow;
+    }
+
+    @include media-breakpoint-up(md){
+        flex: 0 0 25%;
+        border: 1px solid pink;
+    }
+
+    @include media-breakpoint-up(lg){
+        flex: 0 0 16.6%;
+        border: 1px solid blue;
+    }
+
+    .projectSquare-title{
+        
+    }
+}

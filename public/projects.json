@@ -196,6 +196,202 @@
 	
 			"id":"reactredux",
 			"type":["design,front-end"]
+		},
+		{
+			"name":
+				{
+					"en":"Design",
+					"fr":"Design"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"designproject",
+			"type":["design"]
+		},
+		{
+			"name":
+				{
+					"en":"Illustration",
+					"fr":"Illustration"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"illoproject",
+			"type":["illo"]
+		},
+		{
+			"name":
+				{
+					"en":"Backend",
+					"fr":"Backend"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"Backendproject",
+			"type":["Back-end"]
+		},
+		{
+			"name":
+				{
+					"en":"Print",
+					"fr":"Imprimé"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"printproject",
+			"type":["print"]
 		}
 	]
 	}
