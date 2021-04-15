@@ -15,7 +15,9 @@ class Navigation extends React.Component<Properties> {
     constructor(props){
         super(props);
         this.setState({navitems:null});
+
     }
+
    	render() {
         var navItems = [];
         if(this.props.info.results.types != null){
@@ -23,13 +25,11 @@ class Navigation extends React.Component<Properties> {
             <NavigationLink key={index} text={item[this.props.info.language]} type={item.type}/>
             );
         }
-        
-        console.log(navItems);
-        
+                
         return(
             <div className="navigation">
-            {navItems}    
-            <Language/>
+                <div>{navItems}</div>
+                <Language/>
             </div>
         )
         

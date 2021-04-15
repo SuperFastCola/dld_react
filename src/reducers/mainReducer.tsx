@@ -26,9 +26,9 @@ const initialState = {
            state = Object.assign({}, state, {error: action.error});
            //console.log(state)
          return state;
-       case "SET_ARTIST":
-           state = Object.assign({}, state, {selected_artist: action.artist});
-           //console.log(state)
+       case "SET_CATEGORY":
+           state = Object.assign({}, state, {category: action.category});
+           console.log(state.category)
          return state;
        case "SET_SEARCH_CATEGORY":
            state = Object.assign({}, state, {category: action.category});

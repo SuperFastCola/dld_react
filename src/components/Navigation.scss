@@ -2,11 +2,13 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-
     display: flex;
 
-    button{
-        background: none;
-        border: 0px;
+    > div{
+        flex-grow: 1;
+        button{
+            background: none;
+            border: 0px;
+        }
     }
 }

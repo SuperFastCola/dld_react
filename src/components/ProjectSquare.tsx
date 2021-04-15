@@ -20,9 +20,11 @@ class ProjectSquare extends React.Component<Properties> {
 	showProject(){
 		return (
 	    	<article className="projectSquare" onClick={()=>this.toggleSquares(this.props.item)}>
-	    	    <div className="projectSquare-title" >
-                    {this.props.item.name[this.props.info.language]}  
-                </div>
+				<div className="projectInside">
+					<div className="projectSquare-title" >
+						{this.props.item.name[this.props.info.language]}  
+					</div>
+				</div>
 	    	</article>
 	    )
 	}

@@ -21,10 +21,10 @@
     }
   }
 
-  export const setTracks = tracks => {
+  export const setType = category => {
     return {
-      type: 'SET_TRACKS',
-      "tracks":tracks
+      type: 'SET_CATEGORY',
+      "category":category
     }
   }
   

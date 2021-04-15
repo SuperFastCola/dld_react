@@ -9,13 +9,21 @@ interface Properties {
     type: string;
     text: string;
     key: number;
+    changeCategory?(string):void;
+    changeType?(any):void;
 };
 
 class NavigationLink extends React.Component<Properties> {   
+    constructor(props){
+        super(props);
+        this.changeType = this.changeType.bind(this);
+    }
+    changeType(type){
+        this.props.changeCategory(type);
+    }
    	render() {
-           console.log(this);
         return(
-            <button className="navigationLink" key={this.props.key} data-type={this.props.type}>{this.props.text}</button>
+            <button className="navigationLink" key={this.props.key} data-type={this.props.type} onClick={()=>this.changeType(this.props.type)}>{this.props.text}</button>
         )
   }
 }
@@ -26,8 +34,8 @@ const mapStateToProps = function(state){
 
  const mapDispatchToProps = function(dispatch) {
     return({
-        changeLanguage: (language) => {
-        	dispatch({type:"SET_LANGUAGE","language":language})
+        changeCategory: (category) => {
+        	dispatch({type:"SET_CATEGORY","category":category})
         }
     })
 }
