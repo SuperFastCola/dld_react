@@ -6,6 +6,7 @@ import ProjectSquare from './ProjectSquare';
 interface Properties {
     info:{
         selected_item:any,
+        category:string,
         results:any,
         error:null,
         language:string
@@ -19,12 +20,17 @@ class Projects extends React.Component<Properties> {
 		super(props);
         this.ajaxError = this.ajaxError.bind(this);
     }
+
 	showProjects(){
-        
         let squares = [];
         if(this.props.info.results != null){
-             squares = this.props.info.results.projects.map((item,index) =>
-                <ProjectSquare key={index} item={item} />
+             squares = this.props.info.results.projects.map((item,index) =>{
+                    var pattern =this.props.info.category
+                    var matcher = new RegExp(pattern,"i");
+                    if(matcher.test(String(item.type)) || this.props.info.category==="all"){
+                        return <ProjectSquare key={index} item={item} />
+                    }
+                }
             );
         }
 
