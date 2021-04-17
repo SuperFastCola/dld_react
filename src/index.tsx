@@ -14,7 +14,7 @@ let initialState = {
 	prev_url: null, //paging url for albums,artists
 	next_tracks_url: null, //paging for tracks navigation - some albums have more than 50 results.
 	prev_tracks_url: null, //paging for tracks navigation
-  category:"all", //determines which collection component used
+  category:[], //determines which collection component used
   language: "en",
   selected_item: null,
   assetPath: "images/",

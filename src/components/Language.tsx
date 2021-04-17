@@ -9,11 +9,7 @@ interface Properties {
     changeLanguage(any):void;
 };
 
-interface State { 
-    label: string;
-};
-
-class Language extends React.Component<Properties, State> {   
+class Language extends React.Component<Properties> {   
     constructor(props){
         super(props);
          this.setLanguage = this.setLanguage.bind(this);
@@ -23,11 +19,9 @@ class Language extends React.Component<Properties, State> {
         e.preventDefault();
         if(this.props.info.language==="en"){
             this.props.changeLanguage("fr");
-            this.setState({label:"English"});
         }
         else{
             this.props.changeLanguage("en");
-            this.setState({label:"Français"});
         }
     }
     setLabel(){

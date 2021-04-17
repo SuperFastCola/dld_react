@@ -27,12 +27,27 @@ const initialState = {
            //console.log(state)
          return state;
        case "SET_CATEGORY":
-           state = Object.assign({}, state, {category: action.category});
-           console.log(state.category)
+          var categories = [];
+
+          //set categories to zero
+          if(action.category==='all'){
+            categories = [];
+          }
+          //add selected types to 
+          else if(state.category.indexOf(action.category)===-1){
+            categories = [...state.category,...Array(action.category)];
+          }
+          else{
+            categories = state.category.filter( (item, index) => {
+              return item!==action.category && item !=='all';
+            })
+          }
+
+          state = Object.assign({}, state, {category: categories});
+
          return state;
        case "SET_SEARCH_CATEGORY":
            state = Object.assign({}, state, {category: action.category});
-           //console.log(state)
          return state;
        default:
          return state;  

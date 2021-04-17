@@ -6,7 +6,7 @@ import ProjectSquare from './ProjectSquare';
 interface Properties {
     info:{
         selected_item:any,
-        category:string,
+        category:Array<number> ,
         results:any,
         error:null,
         language:string
@@ -22,14 +22,36 @@ class Projects extends React.Component<Properties> {
     }
 
 	showProjects(){
+        //create a regular expression pattern
+        var pattern = "";
+
+        //iterate through categories to create a string pattern
+        this.props.info.category.map( (key,index) => {
+            pattern += `(${key})`
+            if(index+1 < this.props.info.category.length){
+                pattern += "|";
+            }
+            return true;
+        });
+        
+        //if pattern is still and empty string assign as word character
+        if(pattern===""){
+            pattern = "\\w";
+        }
+
+        //create a new regular expression
+        var matcher = new RegExp(pattern,"i");
+        
+        //create an array of portfolio items
         let squares = [];
+
+        //
         if(this.props.info.results != null){
-             squares = this.props.info.results.projects.map((item,index) =>{
-                    var pattern =this.props.info.category
-                    var matcher = new RegExp(pattern,"i");
-                    if(matcher.test(String(item.type)) || this.props.info.category==="all"){
+             squares = this.props.info.results.projects.map((item,index) =>{  
+                    if(matcher.test(String(item.type))){
                         return <ProjectSquare key={index} item={item} />
                     }
+                    return false;
                 }
             );
         }

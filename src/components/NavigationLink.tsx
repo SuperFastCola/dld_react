@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 interface Properties {
     info:{
         language:string,
+        category:Array<string>,
         results: any
     };
     type: string;
@@ -22,8 +23,13 @@ class NavigationLink extends React.Component<Properties> {
         this.props.changeCategory(type);
     }
    	render() {
+        var active = false;
+        if(this.props.info.category.indexOf(this.props.type)!==-1 || (this.props.type==='all' && this.props.info.category.length===0)){
+            active = true;
+        }
+
         return(
-            <button className="navigationLink" key={this.props.key} data-type={this.props.type} onClick={()=>this.changeType(this.props.type)}>{this.props.text}</button>
+            <button className={active ? "navigationLink active": "navigationLink"} key={this.props.key} data-type={this.props.type} onClick={()=>this.changeType(this.props.type)}>{this.props.text}</button>
         )
   }
 }
