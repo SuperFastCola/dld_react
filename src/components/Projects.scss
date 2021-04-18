@@ -1,4 +1,9 @@
-.projectList{
-    display: flex;
-    flex-wrap: wrap;
+@import "../vendor/bootstrap/scss/bootstrap-utilities";
+
+.projects{
+    padding: map-get($spacers,3);
+    .projectList{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

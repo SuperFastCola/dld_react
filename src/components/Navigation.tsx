@@ -11,11 +11,26 @@ interface Properties {
     };
 };
 
-class Navigation extends React.Component<Properties> {   
+interface State{
+    active: boolean;
+}
+
+class Navigation extends React.Component<Properties, State> {   
     constructor(props){
         super(props);
-        this.setState({navitems:null});
+        this.state = {active:false};
+        this.toggelMenu = this.toggelMenu.bind(this);
+    }
 
+    toggelMenu(){
+
+        console.log("toggler");
+        if(this.state.active){
+            this.setState({active:false});
+        }
+        else{
+            this.setState({active:true});
+        }
     }
 
    	render() {
@@ -28,7 +43,10 @@ class Navigation extends React.Component<Properties> {
                 
         return(
             <div className="navigation">
-                <div>{navItems}</div>
+                <div className="mobile navbar-light" onClick={()=>this.toggelMenu()}>
+                    <div className="navbar-toggler-icon"></div>
+                </div>
+                <div className={this.state.active ? "nav-items active": "nav-items"}>{navItems}</div>
                 <Language/>
             </div>
         )

@@ -1,18 +1,67 @@
+@import "../vendor/bootstrap/scss/bootstrap-utilities";
+
 .navigation{
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    z-index: 20;
+    background-color: white;
     display: flex;
+    flex-direction: row-reverse;
 
-    > div{
-        flex-grow: 1;
+    padding: map-get($spacers,3);
+    margin-bottom: map-get($spacers,3);
+
+    @include media-breakpoint-up(md){
+        flex-direction: row;
+        margin-bottom: map-get($spacers,4);
+    }
+
+    .mobile{
+        display: block;
+        flex-grow: 0;
+        @include media-breakpoint-up(md){
+            display: none;
+        }
+    }
+
+    .nav-items{
+        display: none;
+        background-color: white;
+
+        position: absolute;
+        flex-direction: column;
+        top: 100%;
+        left: 0;
+        min-width: 100%;
+
+        &.active{
+            display: flex;
+        }
+
+        @include media-breakpoint-up(md){
+            position: unset;
+            flex-grow: 1;
+            min-width: unset;
+            top: unset;
+            flex-direction: unset;
+            display: block;
+        }
+
         button{
             background: none;
             border: 0px;
+            padding: map-get($spacers,3) 0;
+
+            @include media-breakpoint-up(md){
+                padding: 0 map-get($spacers,3) 0 0;
+            }
 
             &.navigationLink.active{
                 text-decoration: underline;
             }
         }
     }
+
+
 }
