@@ -392,6 +392,277 @@
 	
 			"id":"printproject",
 			"type":["print"]
+		},
+		{
+			"name":
+				{
+					"en":"React/Redux with Spotify",
+					"fr":"React/Redux avec Spotify"
+				},
+			"description":
+				{
+					"en":"Framework Exploration with Spotify API",
+					"fr":"Exploration ReaactJs avec API Spotify"
+				},
+			"role":
+				{
+					"en":"Web Design, Development and Deployment",
+					"fr":"Web Design, Development and Deployment"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services","React JS","Redux","Webpack","HTML 5","Responsive CSS"
+						],
+					"fr":[
+							"Amazon Web Services","React JS","Redux","Webpack","HTML 5","Responsive CSS"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
+							"text":"Essential Code"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/blob/master/app/sass/styles.scss",
+							"text":"Essential SASS"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
+							"text":"Code essentiel"
+						},
+						{
+							"link":"https://github.com/SuperFastCola/tt-music-search/blob/master/app/sass/styles.scss",
+							"text":"SASS essentiel"
+						}
+					]
+				},
+	
+			"id":"reactredux",
+			"type":["design","front-end"]
+		},
+		{
+			"name":
+				{
+					"en":"Design",
+					"fr":"Design"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"designproject",
+			"type":["design"]
+		},
+		{
+			"name":
+				{
+					"en":"Illustration",
+					"fr":"Illustration"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"illoproject",
+			"type":["illo"]
+		},
+		{
+			"name":
+				{
+					"en":"Backend",
+					"fr":"Backend"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"Backendproject",
+			"type":["Back-end"]
+		},
+		{
+			"name":
+				{
+					"en":"Print",
+					"fr":"Imprimé"
+				},
+			"tech":
+				{
+					"en":[
+							"Amazon Web Services"
+						],
+					"fr":[
+							"Amazon Web Services"
+					]
+				},
+			"image":
+				{ 
+					"en":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+						
+					},
+					"fr":{
+						"sm" : "reactredux_spotify_sm.jpg",
+						"md" : "reactredux_spotify_md.jpg",
+						"lg" : "reactredux_spotify_lg.jpg"
+					}
+				},
+			"url": 
+				{
+					"en":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "View Project"
+						}
+					],
+	
+					"fr":[
+						{
+							"link":"http://reactredux.deluxeluxury.com/",
+							"text": "Regardez le projet"
+						}
+					]
+				},
+	
+			"id":"printproject",
+			"type":["print"]
 		}
 	]
 	}

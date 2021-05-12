@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import "./Projects.scss";
-import ProjectSquare from './ProjectSquare';    
+import ProjectSquare from './ProjectSquare';
 
 interface Properties {
     info:{
@@ -59,8 +59,8 @@ class Projects extends React.Component<Properties> {
 		return (
 	    	<section className="projects">
 	    	<h1>{this.props.info.results.labels.projects[this.props.info.language]}</h1>
-            <div className="projectList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-0.5 grid-flow-row-dense">
-                {squares}
+            <div className="projectList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-0.5 grid-flow-row-dense">                
+            {squares}
             </div>
 	    	</section>
 	    )
