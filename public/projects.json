@@ -396,8 +396,8 @@
 		{
 			"name":
 				{
-					"en":"React/Redux with Spotify",
-					"fr":"React/Redux avec Spotify"
+					"en":"React/Redux with Spotify2",
+					"fr":"React/Redux avec Spotify2"
 				},
 			"description":
 				{
@@ -471,8 +471,8 @@
 		{
 			"name":
 				{
-					"en":"Design",
-					"fr":"Design"
+					"en":"Design2",
+					"fr":"Design2"
 				},
 			"tech":
 				{
@@ -514,14 +514,14 @@
 					]
 				},
 	
-			"id":"designproject",
+			"id":"designproject2",
 			"type":["design"]
 		},
 		{
 			"name":
 				{
-					"en":"Illustration",
-					"fr":"Illustration"
+					"en":"Illustration2",
+					"fr":"Illustration2"
 				},
 			"tech":
 				{
@@ -563,14 +563,14 @@
 					]
 				},
 	
-			"id":"illoproject",
+			"id":"illoproject2",
 			"type":["illo"]
 		},
 		{
 			"name":
 				{
-					"en":"Backend",
-					"fr":"Backend"
+					"en":"Backend2",
+					"fr":"Backend2"
 				},
 			"tech":
 				{
@@ -612,14 +612,14 @@
 					]
 				},
 	
-			"id":"Backendproject",
+			"id":"Backendproject2",
 			"type":["Back-end"]
 		},
 		{
 			"name":
 				{
-					"en":"Print",
-					"fr":"Imprimé"
+					"en":"Print2",
+					"fr":"Imprimé2"
 				},
 			"tech":
 				{

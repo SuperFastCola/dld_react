@@ -59,13 +59,7 @@ const mapStateToProps = function(state){
 	return {"info":state};		
 }
 
- const mapDispatchToProps = function(dispatch) {
-    return({
-        changeLanguage: (language) => {
-        	dispatch({type:"SET_LANGUAGE","language":language})
-        }
-    })
-}
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Navigation)
+
+export default connect(mapStateToProps)(Navigation)

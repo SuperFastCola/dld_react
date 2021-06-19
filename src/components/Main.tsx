@@ -9,36 +9,36 @@ import ProjectDetails from './ProjectDetails';
 interface Properties {
     info:{
         url:null,
-        language:string,
+		language:string,
+		selected_item: any,
 		results: any,
         error:null,
         token: null
     };
     setResults(any):void;
-    setAjaxError(any):void;
+	setAjaxError(any):void;
 };
 
 class App extends React.Component<Properties> {
+	private scrollObserver = null;
+
 	constructor(props) {
 		super(props);
 		this.ajaxError = this.ajaxError.bind(this);
 	}
-	componentDidMount() {
-			sendAjaxRequest(this.props.info.url,this.props.setResults,this.ajaxError);
-	}
 
-	showProjectDetails(){
-		
+	componentDidMount() {
+		sendAjaxRequest(this.props.info.url,this.props.setResults,this.ajaxError);
 	}
 
 	showApp(){
 		if(this.props.info.results!=null){
 			return (
-				<>
+				<div className="portfolio">
 				<Navigation/>
 				<Projects/>
 				<ProjectDetails/>
-				</>
+				</div>
 			)
 		}
 		else{
@@ -63,7 +63,7 @@ const mapStateToProps = function(state){
     return({
         setResults: (results) => {
         	dispatch({type:"SET_RESULTS","results":results})
-        },
+		},
         errorAlert: () => {
         	dispatch({type:"ALL"})
         },

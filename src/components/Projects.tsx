@@ -49,7 +49,7 @@ class Projects extends React.Component<Properties> {
         if(this.props.info.results != null){
              squares = this.props.info.results.projects.map((item,index) =>{  
                     if(matcher.test(String(item.type))){
-                        return <ProjectSquare key={index} item={item} />
+                        return <ProjectSquare key={index} item={item} data-key={index} />
                     }
                     return false;
                 }
@@ -59,7 +59,7 @@ class Projects extends React.Component<Properties> {
 		return (
 	    	<section className="projects">
 	    	<h1>{this.props.info.results.labels.projects[this.props.info.language]}</h1>
-            <div className="projectList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-0.5 grid-flow-row-dense">                
+            <div className="projectList">                
             {squares}
             </div>
 	    	</section>
@@ -70,11 +70,8 @@ class Projects extends React.Component<Properties> {
 		this.props.setAjaxError(textStatus);
 	}
 	render() {
-        if(this.props.info.selected_item==null){
-            return this.showProjects();
-        }
-        return false;
-	    
+        return this.showProjects();
+    
   }
 }
 

@@ -14,6 +14,10 @@ const initialState = {
          state = Object.assign({}, state, {results: action.results})
          return state;
        
+        case "SET_SCROLL":
+          state = Object.assign({}, state, {scrollPosition: action.scroll})
+        return state;
+
        case "SET_LANGUAGE":
          state = Object.assign({}, state, {language: action.language})
        return state;

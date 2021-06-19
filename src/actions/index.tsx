@@ -5,6 +5,14 @@
       "results":results
     }
   }
+
+  export const setScroll = scroll => {
+    return {
+      type: 'SET_SCROLL',
+      "scroll":scroll
+    }
+  }
+  
   
   export const changeLanguage = language => {
 

@@ -1,22 +1,39 @@
 @import "../vendor/bootstrap/scss/bootstrap-utilities";
 
 .projectDetails{
+    padding: 0 map-get($spacers,3);
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    background-color: white;
 
     .projectClose{
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        margin: 0 0 map-get($spacers,3) 0;
+        
+        @include media-breakpoint-up(md){
+            margin: map-get($spacers,3) 0;
+        }
+
+        @include media-breakpoint-up(md){
+            align-items: center;
+        }
+        
         h1{
             flex: 1 1 100%;
-            margin: map-get($spacers,3) 0;
         }
 
     }
     
-    
 
     .projectHolder{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+
+        @include media-breakpoint-up(md){
+            flex-direction: row;
+        }
     
         .projectImage{
             flex: 1 1 60%;
@@ -27,8 +44,13 @@
             }
         }
         .projectDescription{
-            flex: 1 1 40%;
-            padding: 0 map-get($spacers,4);
+            flex: 1 1 100%;
+            margin: map-get($spacers,4) 0 0;
+
+            @include media-breakpoint-up(md){
+                flex: 1 1 40%;
+                padding: 0 0 0 map-get($spacers,4);
+            }
 
         }
     }

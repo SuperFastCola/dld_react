@@ -9,15 +9,28 @@ interface Properties {
 };
 
 class ProjectDetails extends React.Component<Properties> {
+    constructor(props){
+        super(props);
+        this.setTop = this.setTop.bind(this);
+    }
     displayProject() {
         if (this.props.info.selected_item != null) {
             return true;
         }
         return false;
     }
-
     closeDetails(){
+        window.scroll(0, this.props.info.scrollPosition);
 		this.props.setSelectedItem(null);
+    }
+
+    setTop(){
+        var nav = document.querySelector(".navigation");
+        var marginBottom = Number(String(window.getComputedStyle(nav).marginBottom).replace("px",""));
+        window.scroll(0, 0);
+        return {
+            top: String((nav.clientHeight + marginBottom) + "px"),
+        };
     }
     
     showItem(item,key){
@@ -55,7 +68,7 @@ class ProjectDetails extends React.Component<Properties> {
         var lang = this.props.info.language;
 
         return (
-            <section className="projectDetails">
+            <section className="projectDetails" style={this.setTop()}>
                 <div className="projectClose">
                     <h1>{project.name[lang]}</h1>
                     <button type="button" className="btn-close" aria-label="Close" onClick={()=>this.closeDetails()}></button>
