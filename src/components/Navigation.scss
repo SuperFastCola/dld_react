@@ -5,7 +5,7 @@
     position: -webkit-sticky;
     top: 0;
     z-index: 20;
-    background-color: white;
+    background: transparent;
     display: flex;
     flex-direction: row-reverse;
 
@@ -14,7 +14,7 @@
 
     @include media-breakpoint-up(md){
         flex-direction: row;
-        margin-bottom: map-get($spacers,4);
+        margin-bottom: 100px;
     }
 
     .mobile{
@@ -27,7 +27,7 @@
 
     .nav-items{
         display: none;
-        background-color: white;
+        background: transparent;
 
         position: absolute;
         flex-direction: column;
