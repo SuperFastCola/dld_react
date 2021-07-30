@@ -135,6 +135,110 @@
                     y:0
                 },
                 frame: 0
+            },
+            "waiter":{
+                x:0,
+                rtol: Math.floor(Math.random()*2),
+                step: 0,
+                increment:{
+                    pos: 4,
+                    pace: 2
+                },
+                walkat: 10,
+                top: 0,
+                width: 84,
+                height: 140,
+                frames:[
+                    {x:0,y:140*6},
+                    {x:84,y:140*6},
+                    {x:84*2,y:140*6},
+                    {x:84*3,y:140*6}
+                ],
+                delay: Math.round(Math.random()*delayamount),
+                delayCount: 0,
+                crop:{
+                    x:0,
+                    y:0
+                },
+                frame: 0
+            },
+            "handyman":{
+                x:0,
+                rtol: Math.floor(Math.random()*2),
+                step: 0,
+                increment:{
+                    pos: 4,
+                    pace: 2
+                },
+                walkat: 10,
+                top: 0,
+                width: 168,
+                height: 140,
+                frames:[
+                    {x:0,y:140*5},
+                    {x:168,y:140*5},
+                    {x:168*2,y:140*5},
+                    {x:168*3,y:140*5}
+                ],
+                delay: Math.round(Math.random()*delayamount),
+                delayCount: 0,
+                crop:{
+                    x:0,
+                    y:0
+                },
+                frame: 0
+            },
+            "modelt":{
+                x:0,
+                rtol: Math.floor(Math.random()*2),
+                step: 0,
+                increment:{
+                    pos: 10,
+                    pace: 1
+                },
+                walkat: 10,
+                top: -10,
+                width: 168,
+                height: 140,
+                frames:[
+                    {x:336,y:140},
+                    {x:336,y:140},
+                    {x:336 + 168,y:140},
+                    {x:336 + 168,y:140}
+                ],
+                delay: Math.round(Math.random()*delayamount),
+                delayCount: 0,
+                crop:{
+                    x:0,
+                    y:0
+                },
+                frame: 0
+            },
+            "cadillac":{
+                x:0,
+                rtol: Math.floor(Math.random()*2),
+                step: 0,
+                increment:{
+                    pos: 12,
+                    pace: 1
+                },
+                walkat: 10,
+                top: -8,
+                width: 336,
+                height: 140,
+                frames:[
+                    {x:336,y:140*3},
+                    {x:336,y:140*3},
+                    {x:336,y:140*2},
+                    {x:336,y:140*2}
+                ],
+                delay: Math.round(Math.random()*delayamount),
+                delayCount: 0,
+                crop:{
+                    x:0,
+                    y:0
+                },
+                frame: 0
             }
         },
     };
@@ -228,18 +332,42 @@
         }
     }
 
+    internal.resizeObserver = new ResizeObserver(entries => {
+        console.log(entries);
+    });
+
     internal.ticker = function(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.animator("modelt");
+        this.animator("cadillac");
+        
         this.animator("bouncer");
         this.animator("bird");
         this.animator("woman");
         this.animator("dude");
         this.animator("police");
+        this.animator("handyman");
+        this.animator("waiter");
+        
         window.requestAnimationFrame(this.ticker);
     }
 
+    internal.setSpriteStart = function(){
+        for(var i in this.sprites ){
+            if(this.sprites[i].rtol){
+                this.sprites[i].x = window.innerWidth; 
+            }
+            else{
+                this.sprites[i].x = -(this.sprites[i].width); 
+            }
+            
+        }
+    }
+
     internal.init = function(){
+        this.setSpriteStart();
         this.loadSprites();
+        this.resizeObserver.observe(document.body);
     }
 
     internal.loadSprites = internal.loadSprites.bind(internal);
@@ -249,6 +377,7 @@
     internal.init = internal.init.bind(internal);
     internal.animator = internal.animator.bind(internal);
     internal.resetCharacter = internal.resetCharacter.bind(internal);
+    internal.setSpriteStart = internal.setSpriteStart.bind(internal);
 
     internal.init();
 
