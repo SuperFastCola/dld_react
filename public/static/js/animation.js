@@ -1,8 +1,14 @@
 (function(){
     var delayamount = 500;
+    var tops = {
+        car: 25,
+        char: 30
+    };
     var internal ={
         sprite: new Image(),
         canvas: null,
+        buffer: null,
+        buffer_ctx: null,
         ctx: null,
         delayamount: delayamount,
         sprites:{
@@ -15,7 +21,7 @@
                     pace: 2
                 },
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 84,
                 height: 140,
                 frames:[
@@ -37,13 +43,17 @@
                 rtol: Math.floor(Math.random()*2),
                 step: 0,
                 increment:{
-                    pos: 8,
+                    pos: 6,
                     pace: 2
                 },
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 84,
                 height: 140,
+                resize:{
+                    w: 50,
+                    h: 84
+                },
                 frames:[
                     {x:0,y:140*4},
                     {x:84,y:140*4},
@@ -67,7 +77,7 @@
                     pace: 2
                 },
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 84,
                 height: 140,
                 frames:[
@@ -89,11 +99,11 @@
                 rtol: Math.floor(Math.random()*2),
                 step: 0,
                 increment:{
-                    pos: 4,
+                    pos: 5,
                     pace: 2
                 },
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 84,
                 height: 140,
                 frames:[
@@ -119,7 +129,7 @@
                     pace: 2
                 },
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 84,
                 height: 140,
                 frames:[
@@ -141,11 +151,11 @@
                 rtol: Math.floor(Math.random()*2),
                 step: 0,
                 increment:{
-                    pos: 4,
+                    pos: 3,
                     pace: 2
                 },
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 84,
                 height: 140,
                 frames:[
@@ -170,8 +180,9 @@
                     pos: 4,
                     pace: 2
                 },
+                playing: false,
                 walkat: 10,
-                top: 0,
+                top: tops.char,
                 width: 168,
                 height: 140,
                 frames:[
@@ -197,7 +208,7 @@
                     pace: 1
                 },
                 walkat: 10,
-                top: -10,
+                top: tops.car - 2,
                 width: 168,
                 height: 140,
                 frames:[
@@ -223,7 +234,7 @@
                     pace: 1
                 },
                 walkat: 10,
-                top: -8,
+                top: tops.car,
                 width: 336,
                 height: 140,
                 frames:[
@@ -239,6 +250,51 @@
                     y:0
                 },
                 frame: 0
+            },
+            "ufo":{
+                x:0,
+                rtol: Math.floor(Math.random()*4),
+                step: 0,
+                increment:{
+                    pos: 5,
+                    pace: 1
+                },
+                walkat: 10,
+                top: tops.car - 20,
+                width: 84,
+                height: 140,
+                resize:{
+                    w: 50,
+                    h: 84
+                },
+                frames:[
+                    {x:84*4,y:140*4},
+                    {x:84*4,y:140*4},
+                    {x:84*4,y:140*4},
+                    {x:84*4,y:140*4}
+                ],
+                delay: Math.round(Math.random()*delayamount),
+                delayCount: 0,
+                crop:{
+                    x:0,
+                    y:0
+                },
+                frame: 0
+            },
+            "cityscape":{
+                x:0,
+                top: 0,
+                width: 672,
+                height: 280,
+                repeat: 1,
+                resize:{
+                    w: 432,
+                    h: 180
+                },
+                crop:{
+                    x:0,
+                    y:140*7
+                },
             }
         },
     };
@@ -251,14 +307,16 @@
 
     internal.drawBackground = async function(blob){
         this.canvas = document.getElementById('cityscape');
+        this.buffer = document.createElement('canvas');
         this.sprite.src  =  URL.createObjectURL(blob);
         this.sprite.onload = await this.setCanvas;
     }
 
     internal.setCanvas = function(){
         this.ctx = this.canvas.getContext('2d');
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
+        this.buffer_ctx = this.buffer.getContext('2d');
+        this.canvas.width = this.buffer.width = window.innerWidth;
+        this.canvas.height = this.buffer.height = window.innerHeight;
         window.requestAnimationFrame(this.ticker);
     }
 
@@ -279,7 +337,7 @@
             if(character.delayCount==character.delay){
                 character.walking = true;
             }
-
+            
             if(character.walking){
                 //move sprite
                 if(character.rtol){
@@ -326,47 +384,123 @@
                 }
 
                 if(character.walking){
-                    this.ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, character.width, character.height );
+                    var finalCharacterSize = {
+                        w: character.width,
+                        h: character.height
+                    };
+
+                    if(character.resize != null){
+                        finalCharacterSize.w = character.resize.w;
+                        finalCharacterSize.h = character.resize.h;
+                    }
+                    this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, finalCharacterSize.w, finalCharacterSize.h );
                 }
             }
         }
     }
 
-    internal.resizeObserver = new ResizeObserver(entries => {
-        console.log(entries);
-    });
+    internal.player = function(){
+        var character = this.sprites.handyman;
+        this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, character.width, character.height );
+    }
+
+    internal.drawCityScape = function(spriteName){
+        var cityscape = this.sprites[spriteName];
+        this.buffer_ctx.save();
+        this.buffer_ctx.globalAlpha = .65;
+        for(var i = 0; i<cityscape.repeat; i++){
+            this.buffer_ctx.drawImage(this.sprite, cityscape.crop.x, cityscape.crop.y, cityscape.width, cityscape.height, (cityscape.x + (cityscape.resize.w * i )), cityscape.top, cityscape.resize.w, cityscape.resize.h );
+        }
+        this.buffer_ctx.restore();
+    }
+
+    internal.resizeWindow = function(entries){
+        if(this.canvas != null){
+            this.canvas.width = this.buffer.width = window.innerWidth;
+            this.canvas.height = this.buffer.height = window.innerHeight;
+            this.sprites.cityscape.repeat = Math.ceil(window.innerWidth/this.sprites.cityscape.resize.w);
+        }
+    }
+
+    internal.resizeObserver = new ResizeObserver(internal.resizeWindow.bind(internal));
 
     internal.ticker = function(){
+        this.buffer_ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.drawCityScape("cityscape");
+        this.animator("ufo");
+        this.animator("bird");
         this.animator("modelt");
         this.animator("cadillac");
         
         this.animator("bouncer");
-        this.animator("bird");
         this.animator("woman");
         this.animator("dude");
         this.animator("police");
-        this.animator("handyman");
-        this.animator("waiter");
+        if(this.sprites.handyman.playing){
+            this.player();
+        }
+        else{
+            this.animator("handyman");
+        }
         
+        this.animator("waiter");
+  
+        
+        this.ctx.drawImage(this.buffer, 0, 0, this.canvas.width, this.canvas.height);
         window.requestAnimationFrame(this.ticker);
     }
 
     internal.setSpriteStart = function(){
         for(var i in this.sprites ){
-            if(this.sprites[i].rtol){
-                this.sprites[i].x = window.innerWidth; 
-            }
-            else{
-                this.sprites[i].x = -(this.sprites[i].width); 
+            if(typeof this.sprites[i].frames != "undefined"){
+                if(this.sprites[i].rtol){
+                    this.sprites[i].x = window.innerWidth; 
+                }
+                else{
+                    this.sprites[i].x = -(this.sprites[i].width); 
+                }
             }
             
+        }
+    }
+
+    internal.keyEvents = function(){
+        document.addEventListener("keypress",this.controller);
+    }
+
+    internal.controller = function(e){
+        switch(e.charCode){
+            case 112: //p
+                this.sprites.handyman.playing = true;
+            break;
+
+            case 119: //w
+            this.sprites.handyman.top -= 10;
+            break;
+
+            case 100: //d
+                this.sprites.handyman.x += 15;
+            break;
+
+            case 97: //a
+                this.sprites.handyman.x -= 15;
+            break;
+
+            case 122: //z
+                this.sprites.handyman.top += 10;
+            break;
+
+            case 32: //space
+            break;
         }
     }
 
     internal.init = function(){
         this.setSpriteStart();
         this.loadSprites();
+        this.keyEvents();
         this.resizeObserver.observe(document.body);
     }
 
@@ -378,6 +512,11 @@
     internal.animator = internal.animator.bind(internal);
     internal.resetCharacter = internal.resetCharacter.bind(internal);
     internal.setSpriteStart = internal.setSpriteStart.bind(internal);
+    internal.resizeWindow = internal.resizeWindow.bind(internal);
+    internal.drawCityScape = internal.drawCityScape.bind(internal);
+    internal.keyEvents = internal.keyEvents.bind(internal);
+    internal.controller =  internal.controller.bind(internal);
+    internal.player =  internal.player.bind(internal);
 
     internal.init();
 
