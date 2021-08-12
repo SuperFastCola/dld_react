@@ -321,23 +321,37 @@
     }
 
     internal.resetCharacter = function(character){
+        if(character.playing==null || !character.playing){
             character.delay = Math.round(Math.random()*this.delayamount);
             character.delayCount=0;
             character.walking = false;
             character.rtol = Math.floor(Math.random()*2);
+        }
 
     }
 
-    internal.animator = function(name){
+    internal.animator = function(name,noDelay){
         if(typeof this.sprites[name] != "undefined"){
             var character = this.sprites[name];
-
-            character.delayCount++;
             
-            if(character.delayCount==character.delay){
-                character.walking = true;
+            if(typeof noDelay=="undefined"){
+                character.delayCount++;
+                
+                if(character.delayCount==character.delay){
+                    character.walking = true;
+                }
             }
             
+            var finalCharacterSize = {
+                w: character.width,
+                h: character.height
+            };
+
+            if(character.resize != null){
+                finalCharacterSize.w = character.resize.w;
+                finalCharacterSize.h = character.resize.h;
+            }
+
             if(character.walking){
                 //move sprite
                 if(character.rtol){
@@ -372,37 +386,47 @@
                     character.crop = frames[character.frame];
                 }
                 
-                if(character.rtol && (character.x<= -(character.width))){
-                    character.x = -(character.width);
-                    character.rtol = false;
-                    this.resetCharacter(character);
-                }
-                else if(!character.rtol && (character.x>= this.canvas.width)){
-                    character.x = this.canvas.width;
-                    character.rtol = true;
-                    this.resetCharacter(character);
-                }
-
-                if(character.walking){
-                    var finalCharacterSize = {
-                        w: character.width,
-                        h: character.height
-                    };
-
-                    if(character.resize != null){
-                        finalCharacterSize.w = character.resize.w;
-                        finalCharacterSize.h = character.resize.h;
+                if(character.playing==null || !character.playing){
+                    if(character.rtol && (character.x <= -(character.width))){
+                        character.x = -(character.width);
+                        character.rtol = false;
+                        this.resetCharacter(character);
+                        
                     }
-                    this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, finalCharacterSize.w, finalCharacterSize.h );
+                    else if(!character.rtol && (character.x>= this.canvas.width)){
+                        character.x = this.canvas.width;   
+                        this.resetCharacter(character);
+                    }
                 }
+
+                if(character.playing){
+                    if(character.x < -(character.width)){
+                        character.rtol = true;
+                        character.x = this.canvas.width; 
+                    }
+                    else if(character.x> this.canvas.width){
+                        character.rtol = false;
+                        character.x = -(character.width);
+                    }
+                }
+                
+                this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, finalCharacterSize.w, finalCharacterSize.h );
+
+            }
+            else if(character.playing && !character.walking){
+                if(character.rtol){
+                    character.crop = character.frames[1],character.frames[1];
+                }
+                else{
+                    character.crop = character.frames[3],character.frames[3];
+                }
+                
+                this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, finalCharacterSize.w, finalCharacterSize.h );
             }
         }
     }
 
-    internal.player = function(){
-        var character = this.sprites.handyman;
-        this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, character.width, character.height );
-    }
+
 
     internal.drawCityScape = function(spriteName){
         var cityscape = this.sprites[spriteName];
@@ -439,7 +463,7 @@
         this.animator("dude");
         this.animator("police");
         if(this.sprites.handyman.playing){
-            this.player();
+            this.animator("handyman",true);
         }
         else{
             this.animator("handyman");
@@ -468,12 +492,15 @@
 
     internal.keyEvents = function(){
         document.addEventListener("keypress",this.controller);
+        document.addEventListener("keyup",this.controller);
     }
 
     internal.controller = function(e){
+        
         switch(e.charCode){
             case 112: //p
                 this.sprites.handyman.playing = true;
+                this.sprites.handyman.walking = !this.sprites.handyman.walking;
             break;
 
             case 119: //w
@@ -481,11 +508,13 @@
             break;
 
             case 100: //d
-                this.sprites.handyman.x += 15;
+                this.sprites.handyman.rtol = false;
+                this.sprites.handyman.walking = true;
             break;
 
             case 97: //a
-                this.sprites.handyman.x -= 15;
+                this.sprites.handyman.rtol = true;
+                this.sprites.handyman.walking = true;
             break;
 
             case 122: //z
@@ -516,7 +545,6 @@
     internal.drawCityScape = internal.drawCityScape.bind(internal);
     internal.keyEvents = internal.keyEvents.bind(internal);
     internal.controller =  internal.controller.bind(internal);
-    internal.player =  internal.player.bind(internal);
 
     internal.init();
 
