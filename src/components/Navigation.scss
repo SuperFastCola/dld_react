@@ -10,11 +10,10 @@
     flex-direction: row-reverse;
 
     padding: map-get($spacers,3);
-    margin-bottom: map-get($spacers,3);
 
     @include media-breakpoint-up(md){
         flex-direction: row;
-        margin-bottom: 100px;
+        margin-bottom: 130px;
     }
 
     .mobile{

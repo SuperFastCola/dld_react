@@ -173,17 +173,18 @@
                 frame: 0
             },
             "handyman":{
-                x:0,
-                rtol: Math.floor(Math.random()*2),
+                x:100,
+                rtol: false,
                 step: 0,
                 increment:{
                     pos: 4,
                     pace: 2
                 },
-                playing: false,
+                playing: true,
                 walkat: 10,
                 top: tops.char,
                 width: 168,
+                walking: false,
                 height: 140,
                 frames:[
                     {x:0,y:140*5},
@@ -462,13 +463,7 @@
         this.animator("woman");
         this.animator("dude");
         this.animator("police");
-        if(this.sprites.handyman.playing){
-            this.animator("handyman",true);
-        }
-        else{
-            this.animator("handyman");
-        }
-        
+        this.animator("handyman",true);
         this.animator("waiter");
   
         
@@ -478,7 +473,7 @@
 
     internal.setSpriteStart = function(){
         for(var i in this.sprites ){
-            if(typeof this.sprites[i].frames != "undefined"){
+            if(typeof this.sprites[i].frames != "undefined" && this.sprites[i].playing==null){
                 if(this.sprites[i].rtol){
                     this.sprites[i].x = window.innerWidth; 
                 }
@@ -496,33 +491,38 @@
     }
 
     internal.controller = function(e){
-        
-        switch(e.charCode){
-            case 112: //p
-                this.sprites.handyman.playing = true;
-                this.sprites.handyman.walking = !this.sprites.handyman.walking;
-            break;
 
-            case 119: //w
-            this.sprites.handyman.top -= 10;
-            break;
+        if(e.type=="keyup"){
+            this.sprites.handyman.walking = false;
+        }
+        else{
+            switch(e.charCode){
+                case 112: //p
+                    this.sprites.handyman.playing = true;
+                    this.sprites.handyman.walking = !this.sprites.handyman.walking;
+                break;
 
-            case 100: //d
-                this.sprites.handyman.rtol = false;
-                this.sprites.handyman.walking = true;
-            break;
+                case 119: //w
+                this.sprites.handyman.top -= 10;
+                break;
 
-            case 97: //a
-                this.sprites.handyman.rtol = true;
-                this.sprites.handyman.walking = true;
-            break;
+                case 100: //d
+                    this.sprites.handyman.rtol = false;
+                    this.sprites.handyman.walking = true;
+                break;
 
-            case 122: //z
-                this.sprites.handyman.top += 10;
-            break;
+                case 97: //a
+                    this.sprites.handyman.rtol = true;
+                    this.sprites.handyman.walking = true;
+                break;
 
-            case 32: //space
-            break;
+                case 122: //z
+                    this.sprites.handyman.top += 10;
+                break;
+
+                case 32: //space
+                break;
+            }
         }
     }
 
