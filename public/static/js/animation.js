@@ -24,6 +24,7 @@
                 top: tops.char,
                 width: 84,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:0,y:0},
                     {x:84,y:0},
@@ -54,6 +55,7 @@
                     w: 50,
                     h: 84
                 },
+                animationframes:[],
                 frames:[
                     {x:0,y:140*4},
                     {x:84,y:140*4},
@@ -80,6 +82,7 @@
                 top: tops.char,
                 width: 84,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:0,y:140*1},
                     {x:84,y:140*1},
@@ -106,6 +109,7 @@
                 top: tops.char,
                 width: 84,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:0,y:140*2},
                     {x:84,y:140*2},
@@ -132,6 +136,7 @@
                 top: tops.char,
                 width: 84,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:0,y:140*3},
                     {x:84,y:140*3},
@@ -158,6 +163,7 @@
                 top: tops.char,
                 width: 84,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:0,y:140*6},
                     {x:84,y:140*6},
@@ -178,20 +184,37 @@
                 step: 0,
                 increment:{
                     pos: 4,
-                    pace: 2
+                    pace: 1
                 },
                 playing: true,
-                walkat: 10,
+                loaded: false,
+                walkat: 4,
                 top: tops.char,
                 width: 168,
                 walking: false,
+                climbing: false,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:0,y:140*5},
                     {x:168,y:140*5},
                     {x:168*2,y:140*5},
                     {x:168*3,y:140*5}
                 ],
+                framesvertical:[
+                    {x:168*3,y:140*4},
+                    {x:168*4,y:140*4}
+                ],
+                framesnoladder:{
+                    rtol:[
+                        {x:84*4,y:140*6},
+                        {x:84*5,y:140*6}
+                    ],
+                    ltor:[
+                        {x:84*6,y:140*6},
+                        {x:84*7,y:140*6}
+                    ]
+                },
                 delay: Math.round(Math.random()*delayamount),
                 delayCount: 0,
                 crop:{
@@ -212,6 +235,7 @@
                 top: tops.car - 2,
                 width: 168,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:336,y:140},
                     {x:336,y:140},
@@ -238,6 +262,7 @@
                 top: tops.car,
                 width: 336,
                 height: 140,
+                animationframes:[],
                 frames:[
                     {x:336,y:140*3},
                     {x:336,y:140*3},
@@ -268,6 +293,7 @@
                     w: 50,
                     h: 84
                 },
+                animationframes:[],
                 frames:[
                     {x:84*4,y:140*4},
                     {x:84*4,y:140*4},
@@ -296,8 +322,19 @@
                     x:0,
                     y:140*7
                 },
+            },
+            "ladder":{
+                x:0,
+                top: tops.char,
+                use: false, 
+                width: 168,
+                height: 140,
+                crop:{
+                    x:168*4,
+                    y:140*5
+                }
             }
-        },
+        }
     };
 
     internal.loadSprites = async function(){
@@ -331,17 +368,16 @@
 
     }
 
-    internal.animator = function(name,noDelay){
-        if(typeof this.sprites[name] != "undefined"){
+    internal.animator = function(name){
+        if(typeof this.sprites[name] != "undefined" && name !="handyman"){
             var character = this.sprites[name];
             
-            if(typeof noDelay=="undefined"){
-                character.delayCount++;
-                
-                if(character.delayCount==character.delay){
-                    character.walking = true;
-                }
+            character.delayCount++;
+            
+            if(character.delayCount==character.delay){
+                character.walking = true;
             }
+            
             
             var finalCharacterSize = {
                 w: character.width,
@@ -365,69 +401,108 @@
                 //change pace
                 character.step += character.increment.pace;
 
+
                 //if pace equals walk chnage
                 if(character.step == character.walkat){
                     character.step = 0;
-                    var frames = [];
 
                     if(character.rtol){
-                        frames = [character.frames[0],character.frames[1]];
+                        character.animationframes = [character.frames[0],character.frames[1]];
                     }
                     else{
-                        frames = [character.frames[2],character.frames[3]];
+                        character.animationframes = [character.frames[2],character.frames[3]];
                     }
 
                     //change walk image for character
-                    if(character.frame==0){
-                        character.frame = 1;
-                    }
-                    else{
-                        character.frame = 0;
-                    }
-                    character.crop = frames[character.frame];
+
+                    character.frame = this.frameNumber(character.frame);
+                    character.crop = character.animationframes[character.frame];
                 }
                 
-                if(character.playing==null || !character.playing){
-                    if(character.rtol && (character.x <= -(character.width))){
-                        character.x = -(character.width);
-                        character.rtol = false;
-                        this.resetCharacter(character);
-                        
-                    }
-                    else if(!character.rtol && (character.x>= this.canvas.width)){
-                        character.x = this.canvas.width;   
-                        this.resetCharacter(character);
-                    }
+                
+                if(character.rtol && (character.x <= -(character.width))){
+                    character.x = -(character.width);
+                    character.rtol = false;
+                    this.resetCharacter(character);
+                    
                 }
-
-                if(character.playing){
-                    if(character.x < -(character.width)){
-                        character.rtol = true;
-                        character.x = this.canvas.width; 
-                    }
-                    else if(character.x> this.canvas.width){
-                        character.rtol = false;
-                        character.x = -(character.width);
-                    }
+                else if(!character.rtol && (character.x>= this.canvas.width)){
+                    character.x = this.canvas.width;   
+                    this.resetCharacter(character);
                 }
+                
                 
                 this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, finalCharacterSize.w, finalCharacterSize.h );
 
-            }
-            else if(character.playing && !character.walking){
-                if(character.rtol){
-                    character.crop = character.frames[1],character.frames[1];
-                }
-                else{
-                    character.crop = character.frames[3],character.frames[3];
-                }
-                
-                this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, finalCharacterSize.w, finalCharacterSize.h );
-            }
+            }        
         }
     }
 
+    internal.animateHandy = function(){
+        var character = this.sprites.handyman;
 
+        if(character.top==tops.char){
+            if(character.rtol){
+                character.animationframes = [character.frames[0],character.frames[1]];
+            }
+            else{
+                character.animationframes = [character.frames[2],character.frames[3]];
+            }
+
+            if(character.x < -(character.width)){
+                character.rtol = true;
+                character.x = this.canvas.width; 
+            }
+            else if(character.x> this.canvas.width){
+                character.rtol = false;
+                character.x = -(character.width);
+            }
+        }
+
+        if(character.walking){
+            //move sprite
+            if(character.rtol){
+                character.x -=  character.increment.pos;
+            }
+            else{
+                character.x +=  character.increment.pos;
+            }
+            
+            //change pace
+            character.step += character.increment.pace;
+
+            //if pace equals walk chnage
+            if(character.step >= character.walkat){
+                character.step = 0;
+
+                if(character.rtol){
+                    character.animationframes = [character.frames[0],character.frames[1]];
+                }
+                else{
+                    character.animationframes = [character.frames[2],character.frames[3]];
+                }
+
+                character.frame = this.frameNumber(character.frame);
+
+            }
+
+            character.crop = character.animationframes[character.frame];
+        }
+        else if(!character.loaded){
+            character.animationframes = [character.frames[2],character.frames[3]];
+            character.crop = character.animationframes[1];
+            character.loaded = true;
+        }
+        else if(character.top<=tops.char){
+            character.animationframes = [character.framesvertical[0],character.framesvertical[1]];
+        }
+
+        
+
+        this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, character.width, character.height );
+
+    }
+    
 
     internal.drawCityScape = function(spriteName){
         var cityscape = this.sprites[spriteName];
@@ -437,6 +512,12 @@
             this.buffer_ctx.drawImage(this.sprite, cityscape.crop.x, cityscape.crop.y, cityscape.width, cityscape.height, (cityscape.x + (cityscape.resize.w * i )), cityscape.top, cityscape.resize.w, cityscape.resize.h );
         }
         this.buffer_ctx.restore();
+    }
+
+    internal.drawLadder = function(){
+        var ladder = this.sprites.ladder;
+        ladder.x = this.sprites.handyman.x;
+        this.buffer_ctx.drawImage(this.sprite, ladder.crop.x, ladder.crop.y, ladder.width, ladder.height, ladder.x, ladder.top, ladder.width, ladder.height );
     }
 
     internal.resizeWindow = function(entries){
@@ -463,7 +544,10 @@
         this.animator("woman");
         this.animator("dude");
         this.animator("police");
-        this.animator("handyman",true);
+        if(this.sprites.handyman.climbing){
+            this.drawLadder();
+        }
+        this.animateHandy();
         this.animator("waiter");
   
         
@@ -491,39 +575,61 @@
     }
 
     internal.controller = function(e){
+        var handy =  this.sprites.handyman;
 
         if(e.type=="keyup"){
-            this.sprites.handyman.walking = false;
+            handy.walking = false;
         }
         else{
             switch(e.charCode){
-                case 112: //p
-                    this.sprites.handyman.playing = true;
-                    this.sprites.handyman.walking = !this.sprites.handyman.walking;
-                break;
 
                 case 119: //w
-                this.sprites.handyman.top -= 10;
+                    handy.top -= 10;
+                    handy.frame = this.frameNumber(handy.frame);
+                    handy.crop = handy.animationframes[handy.frame];
+                    handy.climbing = true;
+
+                    var toplimit = tops.char-(handy.height-10);
+                    if(handy.top<=toplimit){
+                        handy.top = toplimit;
+                    }
                 break;
 
                 case 100: //d
-                    this.sprites.handyman.rtol = false;
-                    this.sprites.handyman.walking = true;
+                    if(handy.top == tops.char){
+                        handy.rtol = false; 
+                        handy.walking = true;
+                        handy.climbing = false;
+                    }
                 break;
 
                 case 97: //a
-                    this.sprites.handyman.rtol = true;
-                    this.sprites.handyman.walking = true;
+                    if(handy.top == tops.char){
+                        handy.rtol = true;
+                        handy.walking = true;
+                        handy.climbing = false;
+                    }
                 break;
 
                 case 122: //z
-                    this.sprites.handyman.top += 10;
+                    handy.top += 10;
+                    handy.frame = this.frameNumber(handy.frame);
+                    handy.crop = handy.animationframes[handy.frame];
+
+                    if(handy.top >= tops.char){
+                        handy.top = tops.char;
+                    }
+    
                 break;
 
                 case 32: //space
                 break;
             }
         }
+    }
+
+    internal.frameNumber = function(num){
+        return num==1?0:1;
     }
 
     internal.init = function(){
@@ -545,6 +651,7 @@
     internal.drawCityScape = internal.drawCityScape.bind(internal);
     internal.keyEvents = internal.keyEvents.bind(internal);
     internal.controller =  internal.controller.bind(internal);
+    internal.animateHandy = internal.animateHandy.bind(internal);
 
     internal.init();
 
