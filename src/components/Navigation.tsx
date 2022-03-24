@@ -13,18 +13,44 @@ interface Properties {
 
 interface State{
     active: boolean;
+    height: string;
 }
 
-class Navigation extends React.Component<Properties, State> {   
+class Navigation extends React.Component<Properties, State> {
+    private windowSize: any;
+    private observer:ResizeObserver;
     constructor(props){
         super(props);
-        this.state = {active:false};
+        this.state = {active:false, height: "auto"};
         this.toggelMenu = this.toggelMenu.bind(this);
+        this.windowSize = null;
+    }
+
+    componentDidMount() {
+        this.observer = new ResizeObserver(this.setNavHeight.bind(this));
+        this.observer.observe(document.body);
+    }
+
+    omponentDidUnMount() {
+        this.observer.unobserve(document.body);
+    }
+
+    setNavHeight(entries, observer){
+        if(typeof this.state.active && window.matchMedia('(max-width: 767px)').matches){
+            if(this.state.height!==entries[0].contentRect.height){
+                this.windowSize = {
+                    height: String(entries[0].contentRect.height) + "px"
+                }            
+                this.setState({height: String(entries[0].contentRect.height)});
+            }
+        }
+        else{
+            this.windowSize = null;
+            this.setState({active:false, height:"auto"});
+        }
     }
 
     toggelMenu(){
-
-        console.log("toggler");
         if(this.state.active){
             this.setState({active:false});
         }
@@ -40,13 +66,13 @@ class Navigation extends React.Component<Properties, State> {
             <NavigationLink key={index} text={item[this.props.info.language]} type={item.type}/>
             );
         }
-                
+      
         return(
-            <div className="navigation">
+            <div className={this.state.active ? "navigation active": "navigation"} >
                 <div className="mobile navbar-light" onClick={()=>this.toggelMenu()}>
                     <div className="navbar-toggler-icon"></div>
                 </div>
-                <div className={this.state.active ? "nav-items active": "nav-items"}>{navItems}</div>
+                <div style={this.windowSize} className={this.state.active ? "nav-items active": "nav-items"}>{navItems}</div>
                 <Language/>
             </div>
         )

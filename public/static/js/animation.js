@@ -1,8 +1,9 @@
 (function(){
     var delayamount = 500;
+    var top_adjustment = 40;
     var tops = {
-        car: 25,
-        char: 30
+        car: 25 + top_adjustment,
+        char: 30 + top_adjustment
     };
     var internal ={
         sprite: new Image(),
@@ -310,7 +311,7 @@
             },
             "cityscape":{
                 x:0,
-                top: 0,
+                top: top_adjustment,
                 width: 672,
                 height: 280,
                 repeat: 1,
@@ -498,7 +499,6 @@
         }
 
         
-
         this.buffer_ctx.drawImage(this.sprite, character.crop.x, character.crop.y, character.width, character.height, character.x, character.top, character.width, character.height );
 
     }

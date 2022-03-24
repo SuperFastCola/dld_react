@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/resize-observer-browser": "^0.1.7",
     "react-transition-group": "^1.2.1"
   }
 }

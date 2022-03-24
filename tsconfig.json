@@ -19,7 +19,8 @@
     "noImplicitAny": false,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["resize-observer-browser"]
   },
   "rules": {
     "no-console": false,

@@ -11,6 +11,13 @@
 
     padding: map-get($spacers,3);
 
+    &.active{
+        background: white;
+        @include media-breakpoint-up(md){
+            background: transparent;
+        }    
+    }
+
     @include media-breakpoint-up(md){
         flex-direction: row;
         margin-bottom: 130px;
@@ -36,6 +43,7 @@
 
         &.active{
             display: flex;
+            background: white;
         }
 
         @include media-breakpoint-up(md){
@@ -48,7 +56,7 @@
         }
 
         button{
-            background: none;
+            background: transparent;
             border: 0px;
             padding: map-get($spacers,3) 0;
 
