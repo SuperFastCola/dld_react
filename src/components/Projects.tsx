@@ -21,6 +21,20 @@ class Projects extends React.Component<Properties> {
         this.ajaxError = this.ajaxError.bind(this);
     }
 
+    showCategories(){        
+        var categories = this.props.info.category.map((cat) => {
+            return this.props.info.results.types.find((type)=>{
+                return type.type===cat   
+            })
+        })
+
+        var categoriesTitle = "";
+        categories.forEach((cat,index)=>
+            categoriesTitle += cat[this.props.info.language] + (index<categories.length-1?", ":"")
+        )
+        return categoriesTitle;
+    }
+
 	showProjects(){
         //create a regular expression pattern
         var pattern = "";
@@ -59,6 +73,7 @@ class Projects extends React.Component<Properties> {
 		return (
 	    	<section className="projects">
 	    	<h1>{this.props.info.results.labels.projects[this.props.info.language]}</h1>
+            <h6>{this.showCategories()}</h6>
             <div className="projectList">                
             {squares}
             </div>

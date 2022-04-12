@@ -7,36 +7,70 @@ import NavigationLink from "./NavigationLink";
 interface Properties {
     info:{
         language:string,
-        results: any
+        results: any,
+        mobileMenu: boolean,
     };
+    setMobileMenu?(boolean):void;
+  
 };
 
 interface State{
-    active: boolean;
     height: string;
 }
 
 class Navigation extends React.Component<Properties, State> {
     private windowSize: any;
     private observer:ResizeObserver;
+    private scrollObserver = null;
+    private navRef: React.RefObject<HTMLDivElement>;;
     constructor(props){
         super(props);
-        this.state = {active:false, height: "auto"};
+        this.state = {height: "auto"};
         this.toggelMenu = this.toggelMenu.bind(this);
+        this.addObserver = this.addObserver.bind(this);
+        this.checkDocumentScoll = this.checkDocumentScoll.bind(this);
         this.windowSize = null;
+        this.navRef = React.createRef();
     }
 
     componentDidMount() {
         this.observer = new ResizeObserver(this.setNavHeight.bind(this));
         this.observer.observe(document.body);
+
+        console.log(this.navRef.current.offsetHeight);
+
+        this.scrollObserver = new IntersectionObserver(this.checkDocumentScoll,{
+            rootMargin: `-${this.navRef.current.offsetHeight}px`
+        });
+
+
+        setTimeout(this.addObserver,1000);
+
     }
 
     omponentDidUnMount() {
         this.observer.unobserve(document.body);
     }
 
+    checkDocumentScoll(entries, observer){
+        if(this.navRef.current!=null){
+            if(entries[0].isIntersecting){
+                console.log("true",this.navRef.current);
+            }
+            else{
+                console.log("false",this.navRef.current);
+            }
+        }
+    }
+
+    addObserver(){
+		//if (this.myRef.current) 
+			this.scrollObserver.observe(document.querySelector(".projects > h1"));
+		return null;
+	}
+
     setNavHeight(entries, observer){
-        if(typeof this.state.active && window.matchMedia('(max-width: 767px)').matches){
+        if(typeof this.props.info.mobileMenu && window.matchMedia('(max-width: 767px)').matches){
             if(this.state.height!==entries[0].contentRect.height){
                 this.windowSize = {
                     height: String(entries[0].contentRect.height) + "px"
@@ -46,16 +80,16 @@ class Navigation extends React.Component<Properties, State> {
         }
         else{
             this.windowSize = null;
-            this.setState({active:false, height:"auto"});
+            this.setState({height:"auto"});
         }
     }
 
     toggelMenu(){
-        if(this.state.active){
-            this.setState({active:false});
+        if(this.props.info.mobileMenu){
+            this.props.setMobileMenu(false);
         }
         else{
-            this.setState({active:true});
+            this.props.setMobileMenu(true);
         }
     }
 
@@ -63,16 +97,16 @@ class Navigation extends React.Component<Properties, State> {
         var navItems = [];
         if(this.props.info.results.types != null){
             navItems = this.props.info.results.types.map((item,index) =>
-            <NavigationLink key={index} text={item[this.props.info.language]} type={item.type}/>
+            <NavigationLink key={index} text={item[this.props.info.language]} type={item.type} />
             );
         }
       
         return(
-            <div className={this.state.active ? "navigation active": "navigation"} >
+            <div ref={this.navRef} className={this.props.info.mobileMenu ? "navigation active": "navigation"} >
                 <div className="mobile navbar-light" onClick={()=>this.toggelMenu()}>
-                    <div className="navbar-toggler-icon"></div>
+                    <div className={this.props.info.mobileMenu ? "btn-close":"navbar-toggler-icon"}></div>
                 </div>
-                <div style={this.windowSize} className={this.state.active ? "nav-items active": "nav-items"}>{navItems}</div>
+                <div style={this.windowSize} className={this.props.info.mobileMenu ? "nav-items active": "nav-items"}>{navItems}</div>
                 <Language/>
             </div>
         )
@@ -85,7 +119,12 @@ const mapStateToProps = function(state){
 	return {"info":state};		
 }
 
+const mapDispatchToProps = function(dispatch) {
+    return({
+        setMobileMenu: (active) => {
+        	dispatch({type:"SET_MOBILE_MENU","mobileMenu":active})
+		},
+    })
+}
 
-
-
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps,mapDispatchToProps)(Navigation)

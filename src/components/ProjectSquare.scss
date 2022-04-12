@@ -7,7 +7,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     position: relative;
-    border: 1px solid black;
+    border: 1px solid $gray-600;
+    margin: map-get($spacers,2) map-get($spacers,1);
 
     background-position: center center;
     background-size: 100% auto;
@@ -18,13 +19,13 @@
         content: "";
         float: left;
         padding-bottom: 70%;
-        border: 1px solid sandybrown;
+        // border: 1px solid sandybrown;
     }
 
 
     @include media-breakpoint-up(sm){
-        flex: 0 0 50%;
-        border: 1px solid yellow;
+        flex: 0 0 48.5%;
+        // border: 1px solid yellow;
 
         &::before {
             padding-bottom: 90%;
@@ -32,18 +33,18 @@
     }
 
     @include media-breakpoint-up(md){
-        flex: 0 0 33.3%;
-        border: 1px solid pink;
+        flex: 0 0 32.2%;
+        // border: 1px solid pink;
     }
 
     @include media-breakpoint-up(lg){
-        flex: 0 0 25%;
-        border: 1px solid green;
+        flex: 0 0 24.15%;
+        // border: 1px solid green;
     }
 
     @include media-breakpoint-up(xl){
-        flex: 0 0 20%;
-        border: 1px solid blue;
+        flex: 0 0 19.3%;
+        // border: 1px solid blue;
     }
 
     .projectInside{

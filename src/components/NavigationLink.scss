@@ -1,0 +1,46 @@
+@import "../vendor/bootstrap/scss/bootstrap-utilities";
+
+button{
+    border: 0px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 0 map-get($spacers,1) 0 0;
+
+    span{
+        padding: map-get($spacers,2) 0;
+        margin-bottom: map-get($spacers,3);
+        flex-basis: 60%;
+        border-radius: 2em;
+    }
+
+    &.navigationLink.active{
+        span{
+            background: $gray-400;
+        }
+    }
+
+    @include media-breakpoint-up(md){
+        background: transparent;
+        display: unset;
+
+        span{
+            padding: 0 map-get($spacers,2) 0 0;
+            margin-bottom: unset;
+            flex-basis: unset;
+        }
+
+        &.navigationLink.active{
+           
+            text-decoration: underline;
+
+            span{
+                background: transparent;
+            }
+        }
+    }
+
+
+
+
+}

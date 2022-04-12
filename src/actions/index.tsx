@@ -13,7 +13,6 @@
     }
   }
   
-  
   export const changeLanguage = language => {
 
     return {
@@ -44,7 +43,6 @@
   }
   
  
-  
   export const setCategory = category => {
     return {
       type: 'SET_SEARCH_CATEGORY',
@@ -55,6 +53,12 @@
   export const setNav = category => {
     return {
       type: 'SET_NAV'
+    }
+  }
+
+  export const setMobileMenu = active => {
+    return {
+      type: 'SET_MOBILE_MENU'
     }
   }
 

@@ -19,7 +19,8 @@ let initialState = {
   language: "en",
   selected_item: null,
   assetPath: "images/",
-  url: "projects.json"
+  url: "projects.json",
+  mobileMenu: false,
 }
 
 

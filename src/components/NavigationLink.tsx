@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import "./NavigationLink.scss";
 
 interface Properties {
     info:{
@@ -29,7 +30,7 @@ class NavigationLink extends React.Component<Properties> {
         }
 
         return(
-            <button className={active ? "navigationLink active": "navigationLink"} key={this.props.key} data-type={this.props.type} onClick={()=>this.changeType(this.props.type)}>{this.props.text}</button>
+            <button className={active ? "navigationLink active": "navigationLink"} key={this.props.key} data-type={this.props.type} onClick={()=>this.changeType(this.props.type)}><span>{this.props.text}</span></button>
         )
   }
 }
