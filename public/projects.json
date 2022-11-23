@@ -252,7 +252,7 @@
             "s": null,
             "m": null,
             "l": null,
-            "xl": null
+            "xl": "react-xl.jpg"
           }
         ],
         "fr": [
@@ -261,7 +261,7 @@
             "s": null,
             "m": null,
             "l": null,
-            "xl": null
+            "xl": "react-xl.jpg"
           }
         ]
       },
@@ -323,20 +323,30 @@
         "en": [
           {
             "order": 0,
-            "s": "task-runner.png",
+            "s": null,
+            "m": null,
+            "l": null,
+            "xl": "sanders-xl.jpg"
+          }
+        ],
+        "fr": [
+          {
+            "order": 0,
+            "s": null,
             "m": null,
             "l": null,
             "xl": null
           }
-        ],
-        "fr": []
+        ]
       },
       "url": {
         "en": [],
         "fr": []
       },
       "projid": "",
-      "type": []
+      "type": [
+        "illustrations"
+      ]
     }
   ]
 }

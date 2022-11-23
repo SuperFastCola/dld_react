@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectImage from './ProjectImage';
 import "./ProjectDetails.scss";
 import { connect } from 'react-redux';
+import { KeyGenerator } from '../modules/KeyGenerator';
 
 interface Properties {
     info: any;
@@ -9,9 +10,11 @@ interface Properties {
 };
 
 class ProjectDetails extends React.Component<Properties> {
+    keyGen:KeyGenerator = new KeyGenerator();
     constructor(props){
         super(props);
         this.setTop = this.setTop.bind(this);
+        this.displayImages = this.displayImages.bind(this);
     }
     displayProject() {
         if (this.props.info.selected_item != null) {
@@ -63,6 +66,11 @@ class ProjectDetails extends React.Component<Properties> {
         return null;
     }
 
+    displayImages(project:any,lang:string){
+        return project.image[lang].map(img=><ProjectImage key={this.keyGen.createItemKey()} source={img} text={project.name[lang]} path={this.props.info.assetPath} />);
+        
+    }
+
     showProjectDetails() {
         var project = this.props.info.selected_item;
         var lang = this.props.info.language;
@@ -76,7 +84,7 @@ class ProjectDetails extends React.Component<Properties> {
 
                 <div className="projectHolder">
                     <div className="projectImage">
-                        <ProjectImage source={project.image[lang]} text={project.name[lang]} path={this.props.info.assetPath} />
+                        {this.displayImages(project,lang)}
                     </div>
 
                     <div className="projectDescription">

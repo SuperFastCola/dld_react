@@ -1,30 +1,49 @@
 import React from 'react';
+import { KeyGenerator } from '../modules/KeyGenerator';
+
 
 interface Properties {
     source: {
-        sm?:string,
-        md?:string,
-        lg?:string
+        s?:string,
+        m?:string,
+        l?:string
+        xl?:string
     };
     text: string;
     path: string;
 };
 
 class ProjectImage extends React.Component<Properties> {
+    keyGen:KeyGenerator = new KeyGenerator();
+    breakpoints:Object = {
+        's':'(max-width: 414px)',
+        'm':'(max-width: 767px)',
+        'l':'(min-width: 768px)',
+        'xl':'(min-width: 1200px)'
+    };
+;
+    constructor(props) {
+        super(props);
+        this.buildPictureSources = this.buildPictureSources.bind(this);
+    }
+
+    buildPictureSources(sourceObject:any){
+        var sources:any = [];
+        for(const [key,value] of Object.entries(sourceObject)){
+            if(key!=="order" && value!==null){
+                sources.push(<source srcSet={this.props.path + value} media={this.breakpoints[key]} key={this.keyGen.createItemKey()} />);
+            }
+        }
+        
+        return sources;
+    }
 
 	render() {
-        var breakpoints = {
-            'sm':'(max-width: 414px)',
-            'md':'(max-width: 767px)',
-            'lg':'(min-width: 768px)'
-        };
-
-        var sources = Object.entries(this.props.source);
 
         return (
 	    	<picture>
-                {sources.map((src, index) => (<source srcSet={this.props.path + src[1]} media={breakpoints[src[0]]} key={index} /> ))} 
-                <img src={this.props.path + this.props.source.lg} alt={this.props.text} />
+                {this.buildPictureSources( this.props.source)}
+                <img src={this.props.path + this.props.source.xl} alt={this.props.text} />
 	    	</picture>
 	    )
   }

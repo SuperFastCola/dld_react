@@ -51,10 +51,27 @@ class ProjectSquare extends React.Component<Properties, State> {
 		this.props.setScroll(window.pageYOffset);
 		this.props.setSelectedItem(item);
 	}
+	
 	displayImage(){
-		if(this.state.visible){
+
+		var defaultImage = null; 
+
+		if( this.props.item.image[this.props.info.language].length>0 && this.props.item.image[this.props.info.language]!==null){
+			if(this.props.item.image[this.props.info.language][0].s!==null){
+				defaultImage = this.props.item.image[this.props.info.language][0].s
+			}
+			else{
+				for(const [key,value] of Object.entries(this.props.item.image[this.props.info.language][0])){
+					if(key!=="order" && value!==null){
+						defaultImage = value;
+					}
+				}
+			}
+		}
+
+		if(this.state.visible && defaultImage!==null){
 			return {
-				backgroundImage: "url(" + this.props.info.assetPath + this.props.item.image[this.props.info.language].sm + ")"
+				backgroundImage: "url(" + this.props.info.assetPath + defaultImage + ")"
 			};
 		}
 		else{

@@ -39,8 +39,6 @@ class Projects extends React.Component<Properties> {
         //create a regular expression pattern
         var pattern = "";
 
-        console.log(this.props.info);
-
         //iterate through categories to create a string pattern
         this.props.info.category.map( (key,index) => {
             pattern += `(${key})`
