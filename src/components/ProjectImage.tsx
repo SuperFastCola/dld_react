@@ -1,7 +1,6 @@
 import React from 'react';
 import { KeyGenerator } from '../modules/KeyGenerator';
 
-
 interface Properties {
     source: {
         s?:string,
@@ -15,6 +14,7 @@ interface Properties {
 
 class ProjectImage extends React.Component<Properties> {
     keyGen:KeyGenerator = new KeyGenerator();
+    defaultImage: string; 
     breakpoints:Object = {
         's':'(max-width: 414px)',
         'm':'(max-width: 767px)',
@@ -25,12 +25,18 @@ class ProjectImage extends React.Component<Properties> {
     constructor(props) {
         super(props);
         this.buildPictureSources = this.buildPictureSources.bind(this);
+        this.defaultImage = null;
     }
 
     buildPictureSources(sourceObject:any){
         var sources:any = [];
+        this.defaultImage = sourceObject.xl??null;
+        
         for(const [key,value] of Object.entries(sourceObject)){
             if(key!=="order" && value!==null){
+                if(this.defaultImage===null){
+                    this.defaultImage = String(value);
+                }
                 sources.push(<source srcSet={this.props.path + value} media={this.breakpoints[key]} key={this.keyGen.createItemKey()} />);
             }
         }
@@ -43,7 +49,7 @@ class ProjectImage extends React.Component<Properties> {
         return (
 	    	<picture>
                 {this.buildPictureSources( this.props.source)}
-                <img src={this.props.path + this.props.source.xl} alt={this.props.text} />
+                <img src={this.props.path + this.defaultImage} alt={this.props.text} />
 	    	</picture>
 	    )
   }

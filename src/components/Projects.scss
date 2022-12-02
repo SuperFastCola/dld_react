@@ -2,10 +2,14 @@
 
 .projects{
     padding: map-get($spacers,3);
+
+    h1{
+        padding-top: map-get($spacers,3);
+    }
     .projectList{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content:flex-start;
 
     }
 }

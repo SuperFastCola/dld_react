@@ -19,6 +19,7 @@ interface Properties {
 	setAjaxError(any):void;
 };
 
+
 class App extends React.Component<Properties> {
 	private scrollObserver = null;
 
@@ -36,7 +37,7 @@ class App extends React.Component<Properties> {
 			return (
 				<div className="portfolio">
 				<Navigation/>
-				<Projects/>
+				{(this.props.info.selected_item===null)?<Projects/>:null}
 				<ProjectDetails/>
 				</div>
 			)

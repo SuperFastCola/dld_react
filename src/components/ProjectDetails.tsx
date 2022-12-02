@@ -67,7 +67,24 @@ class ProjectDetails extends React.Component<Properties> {
     }
 
     displayImages(project:any,lang:string){
-        return project.image[lang].map(img=><ProjectImage key={this.keyGen.createItemKey()} source={img} text={project.name[lang]} path={this.props.info.assetPath} />);
+        //return a project image is not null
+        var img = project.image[lang][0]??undefined;
+        
+        if(img!==undefined){
+            var images:boolean = false;
+            
+            //cycle through image object properties and determine if one of the sources is NOT null
+            for(const [key,value] of Object.entries(img)){
+                if(key!=="order" && value!==null){
+                    images = true;
+                }
+            }
+
+            //if has images return project image object
+            if(images){
+                return <ProjectImage key={this.keyGen.createItemKey()} source={img} text={project.name[lang]} path={this.props.info.assetPath} />
+            }
+        }
         
     }
 

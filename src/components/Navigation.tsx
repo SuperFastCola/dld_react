@@ -9,6 +9,7 @@ interface Properties {
         language:string,
         results: any,
         mobileMenu: boolean,
+        selected_item:any;
     };
     setMobileMenu?(boolean):void;
   
@@ -22,13 +23,15 @@ class Navigation extends React.Component<Properties, State> {
     private windowSize: any;
     private observer:ResizeObserver;
     private scrollObserver = null;
-    private navRef: React.RefObject<HTMLDivElement>;;
+    private navRef: React.RefObject<HTMLDivElement>;
+    private timeoutObserver: any;
     constructor(props){
         super(props);
         this.state = {height: "auto"};
         this.toggelMenu = this.toggelMenu.bind(this);
         this.addObserver = this.addObserver.bind(this);
         this.checkDocumentScoll = this.checkDocumentScoll.bind(this);
+        this.delayObserver = this.delayObserver.bind(this);
         this.windowSize = null;
         this.navRef = React.createRef();
     }
@@ -37,35 +40,31 @@ class Navigation extends React.Component<Properties, State> {
         this.observer = new ResizeObserver(this.setNavHeight.bind(this));
         this.observer.observe(document.body);
 
-        console.log(this.navRef.current.offsetHeight);
-
         this.scrollObserver = new IntersectionObserver(this.checkDocumentScoll,{
-            rootMargin: `-${this.navRef.current.offsetHeight}px`
+            rootMargin: `-${this.navRef.current.offsetHeight}px 0px 0px 0px`
         });
 
-
-        setTimeout(this.addObserver,1000);
-
+        this.addObserver();
     }
 
-    omponentDidUnMount() {
-        this.observer.unobserve(document.body);
+    delayObserver(){
+        this.timeoutObserver = setTimeout(this.addObserver,100);
     }
 
     checkDocumentScoll(entries, observer){
-        if(this.navRef.current!=null){
+        if(this.navRef.current!=null){  
             if(entries[0].isIntersecting){
-                console.log("true",this.navRef.current);
+                this.navRef.current.classList.remove("bg-white", "border-bottom", "border-1", "shadow-sm");
             }
             else{
-                console.log("false",this.navRef.current);
+                this.navRef.current.classList.add("bg-white", "border-bottom", "border-1", "shadow-sm");
             }
         }
     }
 
     addObserver(){
-		//if (this.myRef.current) 
-			this.scrollObserver.observe(document.querySelector(".projects > h1"));
+		this.scrollObserver.observe(document.querySelector("h1"));
+        this.timeoutObserver = null;
 		return null;
 	}
 
@@ -95,6 +94,11 @@ class Navigation extends React.Component<Properties, State> {
 
    	render() {
         var navItems = [];
+
+        if(this.timeoutObserver===null){
+            this.delayObserver();
+        }
+
         if(this.props.info.results.types != null){
             navItems = this.props.info.results.types.map((item,index) =>
             <NavigationLink key={index} text={item[this.props.info.language]} type={item.type} />
@@ -102,7 +106,7 @@ class Navigation extends React.Component<Properties, State> {
         }
       
         return(
-            <div ref={this.navRef} className={this.props.info.mobileMenu ? "navigation active": "navigation"} >
+            <div ref={this.navRef} className={`${this.props.info.mobileMenu ? "navigation active": "navigation"}`} >
                 <div className="mobile navbar-light" onClick={()=>this.toggelMenu()}>
                     <div className={this.props.info.mobileMenu ? "btn-close":"navbar-toggler-icon"}></div>
                 </div>

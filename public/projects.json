@@ -249,8 +249,8 @@
         "en": [
           {
             "order": 1,
-            "s": null,
-            "m": null,
+            "s": "react-s.jpg",
+            "m": "react-m.jpg",
             "l": null,
             "xl": "react-xl.jpg"
           }
@@ -322,22 +322,21 @@
       "image": {
         "en": [
           {
-            "order": 0,
-            "s": null,
-            "m": null,
-            "l": null,
+            "order": 1,
+            "s": "sanders-s.jpg",
+            "m": "sanders-m.jpg",
+            "l": "sanders-l.jpg",
             "xl": "sanders-xl.jpg"
-          }
-        ],
-        "fr": [
+          },
           {
-            "order": 0,
+            "order": 2,
             "s": null,
             "m": null,
             "l": null,
             "xl": null
           }
-        ]
+        ],
+        "fr": []
       },
       "url": {
         "en": [],

@@ -32,7 +32,10 @@ class Projects extends React.Component<Properties> {
         categories.forEach((cat,index)=>
             categoriesTitle += cat[this.props.info.language] + (index<categories.length-1?", ":"")
         )
-        return categoriesTitle;
+        if(categoriesTitle!==""){
+            return categoriesTitle;
+        }
+        return null;
     }
 
 	showProjects(){
