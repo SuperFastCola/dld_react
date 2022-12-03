@@ -40,7 +40,6 @@ class ProjectImage extends React.Component<Properties> {
                 sources.push(<source srcSet={this.props.path + value} media={this.breakpoints[key]} key={this.keyGen.createItemKey()} />);
             }
         }
-        
         return sources;
     }
 

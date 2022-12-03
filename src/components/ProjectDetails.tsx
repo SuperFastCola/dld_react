@@ -1,8 +1,8 @@
 import React from 'react';
-import ProjectImage from './ProjectImage';
 import "./ProjectDetails.scss";
 import { connect } from 'react-redux';
 import { KeyGenerator } from '../modules/KeyGenerator';
+import ProjectImageArea from './ProjectsImageArea';
 
 interface Properties {
     info: any;
@@ -14,7 +14,6 @@ class ProjectDetails extends React.Component<Properties> {
     constructor(props){
         super(props);
         this.setTop = this.setTop.bind(this);
-        this.displayImages = this.displayImages.bind(this);
     }
     displayProject() {
         if (this.props.info.selected_item != null) {
@@ -66,28 +65,6 @@ class ProjectDetails extends React.Component<Properties> {
         return null;
     }
 
-    displayImages(project:any,lang:string){
-        //return a project image is not null
-        var img = project.image[lang][0]??undefined;
-        
-        if(img!==undefined){
-            var images:boolean = false;
-            
-            //cycle through image object properties and determine if one of the sources is NOT null
-            for(const [key,value] of Object.entries(img)){
-                if(key!=="order" && value!==null){
-                    images = true;
-                }
-            }
-
-            //if has images return project image object
-            if(images){
-                return <ProjectImage key={this.keyGen.createItemKey()} source={img} text={project.name[lang]} path={this.props.info.assetPath} />
-            }
-        }
-        
-    }
-
     showProjectDetails() {
         var project = this.props.info.selected_item;
         var lang = this.props.info.language;
@@ -100,9 +77,7 @@ class ProjectDetails extends React.Component<Properties> {
                 </div>
 
                 <div className="projectHolder">
-                    <div className="projectImage">
-                        {this.displayImages(project,lang)}
-                    </div>
+                    <ProjectImageArea project={project} language={lang} assetPath={this.props.info.assetPath} key={this.keyGen.createItemKey()}/>
 
                     <div className="projectDescription">
                         {this.showItem(project,"description")}
