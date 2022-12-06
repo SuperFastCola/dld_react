@@ -46,7 +46,7 @@ class ProjectImage extends React.Component<Properties> {
 	render() {
 
         return (
-	    	<picture>
+	    	<picture className="flex-grow-1">
                 {this.buildPictureSources( this.props.source)}
                 <img src={this.props.path + this.defaultImage} alt={this.props.text} />
 	    	</picture>

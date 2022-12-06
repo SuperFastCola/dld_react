@@ -39,7 +39,7 @@ class ProjectDetails extends React.Component<Properties> {
         var lang = this.props.info.language;
         var labels = this.props.info.results.labels;
 
-        if(item[key] !== undefined && item[key][lang] !== undefined){
+        if(item[key] !== undefined && item[key][lang] !== undefined && item[key][lang].length>0){
 
             if(key==="tech"){
                 return(

@@ -1,5 +1,6 @@
 import React from 'react';
 import { KeyGenerator } from '../modules/KeyGenerator';
+import "./ProjectImageNavigation.scss";
 
 interface props {
     sources: any;
@@ -12,15 +13,14 @@ class ProjectImageNavigation extends React.Component<props> {
 
     displayNavItems(){
        return this.props.sources.map( (item:any, index:number)=>{
-        console.log(this.props.currentImageIndex===index,this.props.currentImageIndex,index);
-            return <li className={`page-item ${(this.props.currentImageIndex===index)?"active":""}`} key={this.keyGen.createItemKey()}><a className="page-link" href="/" data-index={index} onClick={this.props.selectFunction}>{(index+1)}</a></li>
+            return <li className={`page-item ${(this.props.currentImageIndex===index)?"active":""}`} key={this.keyGen.createItemKey()}><a className="page-link" href="/" data-index={index} onClick={this.props.selectFunction}><span>{(index+1)}</span></a></li>
         });
     }
 
     render() {
             return (
-                <nav aria-label="Picture Navigation">
-                    <ul className="pagination">
+                <nav aria-label="Picture Navigation" className="me-2">
+                    <ul className="pagination d-flex flex-row flex-md-column">
                         {this.displayNavItems()}
                     </ul>
                 </nav>

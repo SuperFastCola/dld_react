@@ -48,7 +48,7 @@ class Navigation extends React.Component<Properties, State> {
     }
 
     delayObserver(){
-        this.timeoutObserver = setTimeout(this.addObserver,100);
+        this.timeoutObserver = setTimeout(this.addObserver,50);
     }
 
     checkDocumentScoll(entries, observer){

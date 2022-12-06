@@ -60,7 +60,7 @@ class ProjectImageArea extends React.Component<Props,State> {
 
     render() {
             return (
-                <div className="projectImage">
+                <div className="projectImage d-flex flex-column flex-md-row justify-content-between">
                     {this.displayImageNav(this.props.project)}
                     {this.displayImages(this.props.project)}
                 </div>
