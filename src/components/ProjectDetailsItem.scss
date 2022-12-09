@@ -1,0 +1,10 @@
+@import "../vendor/bootstrap/scss/bootstrap-utilities";
+a.btn{
+    background-color: $gray-100;
+    border-color: $gray-500;
+    color: black;
+
+    &:hover{
+        background-color: $gray-500;
+    }
+}

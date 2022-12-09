@@ -3,6 +3,7 @@ import "./ProjectDetails.scss";
 import { connect } from 'react-redux';
 import { KeyGenerator } from '../modules/KeyGenerator';
 import ProjectImageArea from './ProjectsImageArea';
+import ProjectDetailItem from './ProjectDetailsItem';
 
 interface Properties {
     info: any;
@@ -13,6 +14,7 @@ class ProjectDetails extends React.Component<Properties> {
     keyGen:KeyGenerator = new KeyGenerator();
     constructor(props){
         super(props);
+        console.log(this.props.info.selected_item);
         this.setTop = this.setTop.bind(this);
     }
     displayProject() {
@@ -34,36 +36,6 @@ class ProjectDetails extends React.Component<Properties> {
             top: String((nav.clientHeight + marginBottom) + "px"),
         };
     }
-    
-    showItem(item,key){
-        var lang = this.props.info.language;
-        var labels = this.props.info.results.labels;
-
-        if(item[key] !== undefined && item[key][lang] !== undefined && item[key][lang].length>0){
-
-            if(key==="tech"){
-                return(
-                    <>
-                        <h3>{labels[key][lang]}</h3>
-                        <ul>
-                            {item[key][lang].map((tech, index) => (<li key={index}>{tech}</li>))} 
-                        </ul>
-                    </>
-                )
-            }
-            else{
-                return(
-                    <>
-                        <h3>{labels[key][lang]}</h3>
-                        <p>{item[key][lang]}</p>
-                    </>
-                )
-            }
-            
-        }
-        
-        return null;
-    }
 
     showProjectDetails() {
         var project = this.props.info.selected_item;
@@ -80,9 +52,10 @@ class ProjectDetails extends React.Component<Properties> {
                     <ProjectImageArea project={project} language={lang} assetPath={this.props.info.assetPath} key={this.keyGen.createItemKey()}/>
 
                     <div className="projectDescription">
-                        {this.showItem(project,"description")}
-                        {this.showItem(project,"role")}
-                        {this.showItem(project,"tech")}                        
+                        <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"description"} language={lang}/>
+                        <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"role"} language={lang}/>
+                        <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"tech"} language={lang}/>       
+                        <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"url"} language={lang}/>             
                     </div>
                 </div>
             </section>
