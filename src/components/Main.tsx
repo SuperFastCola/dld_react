@@ -5,12 +5,17 @@ import "./Main.scss";
 import Navigation from './Navigation';
 import Projects from './Projects';
 import ProjectDetails from './ProjectDetails';
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route
+  } from "react-router-dom";
+import ErrorBoundary from './ErrorBoundary';
 
 interface Properties {
     info:{
         url:null,
 		language:string,
-		selected_item: any,
 		results: any,
         error:null,
         token: null
@@ -36,9 +41,13 @@ class App extends React.Component<Properties> {
 		if(this.props.info.results!=null){
 			return (
 				<div className="portfolio">
-				<Navigation/>
-				{(this.props.info.selected_item===null)?<Projects/>:null}
-				<ProjectDetails/>
+					<Navigation/>
+					<Router>
+						<Routes>
+							<Route path="/" element={<Projects/>} />
+							<Route path="/:id" element={<ErrorBoundary><ProjectDetails /></ErrorBoundary>} />
+						</Routes>
+					</Router>
 				</div>
 			)
 		}

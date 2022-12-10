@@ -5,7 +5,6 @@ import ProjectSquare from './ProjectSquare';
 
 interface Properties {
     info:{
-        selected_item:any,
         category:Array<number> ,
         results:any,
         error:null,

@@ -1,12 +1,12 @@
 import React from 'react';
 import "./ProjectSquare.scss";
 import {connect} from 'react-redux';
+import {Navigate } from 'react-router-dom';
 
 interface Properties {
     key: any;
     item: any;
 	info: any;
-	setSelectedItem?(any):void;
 	setScroll(any):void;
 };
 
@@ -17,6 +17,7 @@ interface State{
 class ProjectSquare extends React.Component<Properties, State> {
 	private myRef: React.RefObject<HTMLElement>;
 	private observer = null;
+	private squareClicked = false;
 	constructor(props) {
 		super(props);
 		this.toggleSquares = this.toggleSquares.bind(this);
@@ -49,7 +50,7 @@ class ProjectSquare extends React.Component<Properties, State> {
 	toggleSquares(item){
 		item = Object.assign({}, item, {scrollid: this.props["data-key"]});
 		this.props.setScroll(window.pageYOffset);
-		this.props.setSelectedItem(item);
+		this.squareClicked = true;
 	}
 	
 	displayImage(){
@@ -79,6 +80,12 @@ class ProjectSquare extends React.Component<Properties, State> {
 		}
 	}
 	showProject(){
+
+		if(this.squareClicked){
+			return (
+				<><Navigate to={`/${this.props.item.id}`} replace={true} /></>
+			)
+		}
  		return (
 	    	<article className="projectSquare" id={"projectSquare" + this.props["data-key"]} style={this.displayImage()} onClick={()=>this.toggleSquares(this.props.item)} ref={this.myRef}>
 				<div className="projectInside"  >
@@ -101,9 +108,6 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch) {
     return({
-        setSelectedItem: (item) => {
-        	dispatch({type:"SELECTED_ITEM","selected_item":item})
-		},
 		setScroll: (scroll) => {
         	dispatch({type:"SET_SCROLL","scroll":scroll})
         },

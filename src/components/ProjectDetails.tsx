@@ -4,41 +4,43 @@ import { connect } from 'react-redux';
 import { KeyGenerator } from '../modules/KeyGenerator';
 import ProjectImageArea from './ProjectsImageArea';
 import ProjectDetailItem from './ProjectDetailsItem';
+import { Navigate } from 'react-router-dom';
 
 interface Properties {
     info: any;
-    setSelectedItem?(any):void;
 };
+interface State{
+    closeClicked:boolean
+}
 
-class ProjectDetails extends React.Component<Properties> {
+class ProjectDetails extends React.Component<Properties,State> {
     keyGen:KeyGenerator = new KeyGenerator();
     constructor(props){
         super(props);
-        console.log(this.props.info.selected_item);
+        this.state = {closeClicked:false};
         this.setTop = this.setTop.bind(this);
     }
-    displayProject() {
-        if (this.props.info.selected_item != null) {
-            return true;
-        }
-        return false;
-    }
+
     closeDetails(){
         window.scroll(0, this.props.info.scrollPosition);
-		this.props.setSelectedItem(null);
+        this.setState({closeClicked:true});
     }
 
     setTop(){
         var nav = document.querySelector(".navigation");
-        var marginBottom = Number(String(window.getComputedStyle(nav).marginBottom).replace("px",""));
-        window.scroll(0, 0);
-        return {
-            top: String((nav.clientHeight + marginBottom) + "px"),
-        };
+        if(nav!==null){
+            var marginBottom = Number(String(window.getComputedStyle(nav).marginBottom).replace("px",""));
+            window.scroll(0, 0);
+            return {
+                top: String((nav.clientHeight + marginBottom) + "px"),
+            };
+        }
+        return null;
     }
 
     showProjectDetails() {
-        var project = this.props.info.selected_item;
+        var projectID = Number(window.location.pathname.replace("/",""));
+        var project = this.props.info.results.projects.filter(p=>p.id===projectID)[0];
         var lang = this.props.info.language;
 
         return (
@@ -63,9 +65,13 @@ class ProjectDetails extends React.Component<Properties> {
     }
 
     render() {
-        if (this.displayProject()) {
+        if(this.state.closeClicked){
+           return <><Navigate to="/" replace={true} /></>
+        }
+        else if(this.props.info.results!==null && this.props.info.results.projects.length>0){
             return this.showProjectDetails();
         }
+        
         return null;
     }
 }
@@ -74,12 +80,5 @@ const mapStateToProps = function (state) {
     return { "info": state };
 }
 
-const mapDispatchToProps = function (dispatch) {
-    return ({
-        setSelectedItem: (item) => {
-            dispatch({ type: "SELECTED_ITEM", "selected_item": item })
-        }
-    })
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails)
+export default connect(mapStateToProps)(ProjectDetails)

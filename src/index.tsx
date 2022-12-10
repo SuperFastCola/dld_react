@@ -10,10 +10,6 @@ import reportWebVitals from './reportWebVitals';
 let initialState = {
 	error:null, //holds ajax error text - if not null go to Spotify login
 	results:null, 
-	next_url: null, //paging url for albums,artists
-	prev_url: null, //paging url for albums,artists
-	next_tracks_url: null, //paging for tracks navigation - some albums have more than 50 results.
-	prev_tracks_url: null, //paging for tracks navigation
   category:[], //determines which collection component used
   scrollPosition: 0,
   language: "en",

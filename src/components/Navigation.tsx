@@ -9,7 +9,6 @@ interface Properties {
         language:string,
         results: any,
         mobileMenu: boolean,
-        selected_item:any;
     };
     setMobileMenu?(boolean):void;
   
