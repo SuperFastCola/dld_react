@@ -32,20 +32,40 @@
     }
   ],
   "contents": {
-    "en": {
-      "type": [
-        "about"
-      ],
-      "body": "Coming Soon",
-      "contentFile": "resume.html"
-    },
-    "fr": {
-      "type": [
-        "about"
-      ],
-      "body": "\u00C0 bient\u00F4t",
-      "contentFile": "cv.html"
-    }
+    "en": [
+      {
+        "cssClass": "resume",
+        "link": "http://portfolio.deluxeluxury.com/cv_anthony_baker.pdf",
+        "text": "PDF Resume"
+      },
+      {
+        "cssClass": "github",
+        "link": "https://github.com/SuperFastCola",
+        "text": "Github Repo"
+      },
+      {
+        "cssClass": "linkedin",
+        "link": "https://www.linkedin.com/in/anthony-baker-049898/",
+        "text": "LinkedIn Profile"
+      }
+    ],
+    "fr": [
+      {
+        "cssClass": "resume",
+        "link": "http://portfolio.deluxeluxury.com/cv_anthony_baker.pdf",
+        "text": "CV en PDF"
+      },
+      {
+        "cssClass": "github",
+        "link": "https://github.com/SuperFastCola",
+        "text": "Repo Github"
+      },
+      {
+        "cssClass": "linkedin",
+        "link": "https://www.linkedin.com/in/anthony-baker-049898/",
+        "text": "Profil LinkedIn"
+      }
+    ]
   },
   "labels": {
     "role": {
@@ -216,7 +236,7 @@
     {
       "id": 1,
       "name": {
-        "en": "React/Redux with Spotifies",
+        "en": "React/Redux with Spotify",
         "fr": "React/Redux avec Spotify"
       },
       "description": {
@@ -304,12 +324,12 @@
     {
       "id": 2,
       "name": {
-        "en": "Sanderson",
-        "fr": ""
+        "en": "Sanders",
+        "fr": "Sanders"
       },
       "description": {
         "en": "Comic Book",
-        "fr": ""
+        "fr": "Album de bande dessin\u00E9e"
       },
       "role": {
         "en": "Illustration",
@@ -323,10 +343,26 @@
         "en": [
           {
             "order": 1,
+            "s": "mister_sanders_v25.jpg",
+            "m": null,
+            "l": null,
+            "xl": null
+          },
+          {
+            "order": 2,
             "s": "sanders-s.jpg",
             "m": "sanders-m.jpg",
             "l": "sanders-l.jpg",
             "xl": "sanders-xl.jpg"
+          }
+        ],
+        "fr": [
+          {
+            "order": 1,
+            "s": "sanders-m.jpg",
+            "m": "sanders-xl.jpg",
+            "l": null,
+            "xl": null
           },
           {
             "order": 2,
@@ -335,12 +371,21 @@
             "l": null,
             "xl": null
           }
-        ],
-        "fr": []
+        ]
       },
       "url": {
-        "en": [],
-        "fr": []
+        "en": [
+          {
+            "link": "http://portfolio.deluxeluxury.com/images/mister_sanders_v25.pdf",
+            "text": "View Sample"
+          }
+        ],
+        "fr": [
+          {
+            "link": "http://portfolio.deluxeluxury.com/images/mister_sanders_v25.pdf",
+            "text": "Voir exemplaire"
+          }
+        ]
       },
       "projid": "",
       "type": [

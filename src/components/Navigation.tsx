@@ -3,6 +3,7 @@ import "./Navigation.scss";
 import {connect} from 'react-redux';
 import Language from './Language';
 import NavigationLink from "./NavigationLink";
+import AboutLinks from './AboutLinks';
 
 interface Properties {
     info:{
@@ -110,6 +111,7 @@ class Navigation extends React.Component<Properties, State> {
                     <div className={this.props.info.mobileMenu ? "btn-close":"navbar-toggler-icon"}></div>
                 </div>
                 <div style={this.windowSize} className={this.props.info.mobileMenu ? "nav-items active": "nav-items"}>{navItems}</div>
+                <AboutLinks links={this.props.info.results.contents[this.props.info.language]}/>
                 <Language/>
             </div>
         )

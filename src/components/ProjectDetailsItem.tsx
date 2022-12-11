@@ -34,7 +34,7 @@ class ProjectDetailItem extends React.Component<Properties> {
                 case "url":
                     return (
                         < div className='d-flex flex-column'>
-                        {item[infoType][lang].map((urlItem:any) =><a className="btn btn-secondary border mb-2 text-md-start" href={urlItem.link} target="new" role="button"  key={this.keyGen.createItemKey()}>{urlItem.text}</a>)}
+                        {item[infoType][lang].map((urlItem:any) =><a className="btn btn-secondary border mb-2" href={urlItem.link} target="new" role="button"  key={this.keyGen.createItemKey()}>{urlItem.text}</a>)}
                         </div>
                     )
 
