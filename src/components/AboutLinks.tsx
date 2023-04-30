@@ -38,7 +38,7 @@ class AboutLinks extends React.Component<Props, State> {
         return (
             <div className="aboutLinks"  >
                 <div className="aboutText small align-middle">{this.state.prompt}</div>
-                {this.props.links.map(l=><a className={l.cssClass} href={l.link} data-text={l.text} onMouseEnter={this.showDescriptionText} onMouseLeave={this.clearDescriptionText} key={this.keyGen.createItemKey()} target="new"><span>{l.text}</span></a>)}
+                {this.props.links.map(l=><a className={l.cssclass} href={l.link} data-text={l.text} onMouseEnter={this.showDescriptionText} onMouseLeave={this.clearDescriptionText} key={this.keyGen.createItemKey()} target="new"><span>{l.text}</span></a>)}
             </div>
             );
     }
