@@ -11,6 +11,10 @@ interface Properties {
 
 class ProjectDetailItem extends React.Component<Properties> {
     keyGen:KeyGenerator = new KeyGenerator();
+
+    createMarkup(text:string){
+        return {__html: text};
+    } 
     
     render(){
         var labels = this.props.labels;
@@ -18,7 +22,7 @@ class ProjectDetailItem extends React.Component<Properties> {
         var infoType = this.props.infoType;
         var lang = this.props.language;
 
-        if(item[infoType] !== undefined && item[infoType][lang] !== undefined && item[infoType][lang].length>0){
+        if(item[infoType] !== undefined && item[infoType][lang] !== undefined && item[infoType][lang] !== null ){
 
             switch(infoType){
                 case "tech":
@@ -32,6 +36,8 @@ class ProjectDetailItem extends React.Component<Properties> {
                     )
                     
                 case "url":
+
+                    console.log(item[infoType][lang]);
                     return (
                         < div className='d-flex flex-column'>
                         {item[infoType][lang].map((urlItem:any) =><a className="btn btn-secondary border mb-2" href={urlItem.link} target="new" role="button"  key={this.keyGen.createItemKey()}>{urlItem.text}</a>)}
@@ -42,7 +48,7 @@ class ProjectDetailItem extends React.Component<Properties> {
                     return(
                         <>
                             <h3>{labels[infoType][lang]}</h3>
-                            <p>{item[infoType][lang]}</p>
+                            <p dangerouslySetInnerHTML={this.createMarkup(item[infoType][lang])}></p>
                         </>
                     )
             }

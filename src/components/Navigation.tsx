@@ -37,14 +37,16 @@ class Navigation extends React.Component<Properties, State> {
     }
 
     componentDidMount() {
-        this.observer = new ResizeObserver(this.setNavHeight.bind(this));
-        this.observer.observe(document.body);
+        // this.observer = new ResizeObserver(this.setNavHeight.bind(this));
+        // this.observer.observe(document.body);
 
-        this.scrollObserver = new IntersectionObserver(this.checkDocumentScoll,{
-            rootMargin: `-${this.navRef.current.offsetHeight}px 0px 0px 0px`
-        });
+        if(this.scrollObserver==null){
+            this.scrollObserver = new IntersectionObserver(this.checkDocumentScoll,{
+                rootMargin: `-${this.navRef.current.offsetHeight}px 0px 0px 0px`
+            });
+            this.addObserver();
+        }
 
-        this.addObserver();
     }
 
     delayObserver(){

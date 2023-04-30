@@ -6,6 +6,7 @@ import rootReducer from './reducers/mainReducer';
 import App from './components/Main';
 import reportWebVitals from './reportWebVitals';
 
+let baseURL = "//images.deluxeluxury.com/";
 
 let initialState = {
 	error:null, //holds ajax error text - if not null go to Spotify login
@@ -14,10 +15,12 @@ let initialState = {
   scrollPosition: 0,
   language: "en",
   selected_item: null,
-  assetPath: "images/",
-  url: "projects.json",
+  assetPath: baseURL,
+  url: `${baseURL}projects.json?t=${Math.random()}`,
   mobileMenu: false,
 }
+
+console.log(initialState);
 
 
 //connect store

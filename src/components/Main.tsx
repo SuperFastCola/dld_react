@@ -26,7 +26,6 @@ interface Properties {
 
 
 class App extends React.Component<Properties> {
-	private scrollObserver = null;
 
 	constructor(props) {
 		super(props);
