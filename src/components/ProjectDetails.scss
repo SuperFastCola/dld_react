@@ -9,19 +9,28 @@
 
     .projectClose{
         display: flex;
-        align-items: flex-start;
-        margin: 0 0 map-get($spacers,3) 0;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        margin: 0 0 1rem 0;
         
         @include media-breakpoint-up(md){
-            margin: map-get($spacers,3) 0;
+            margin: 0 0 3rem 0;
         }
 
         @include media-breakpoint-up(md){
-            align-items: center;
+            align-items: flex-start;
+        }
+
+        @include media-breakpoint-up(md){
+            flex-direction: row;
         }
         
         h1{
-            flex: 1 1 100%;
+            flex-basis: 60%;
+
+            @include media-breakpoint-up(lg){
+                flex-basis: 100%;
+            }
         }
 
     }
@@ -29,9 +38,10 @@
     .projectHolder{
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         padding-bottom: map-get($spacers,5);
 
-        @include media-breakpoint-up(md){
+        @include media-breakpoint-up(lg){
             flex-direction: row;
         }
     
@@ -39,10 +49,11 @@
             flex: 1 1 60%;
             picture{
                 display: block;
-                border:1px solid $gray-400;
                 img{
                     display: block;
                     width: 100%;
+                    border:1px solid $gray-400;
+
                 }
             }
 
@@ -51,11 +62,17 @@
             flex: 1 1 100%;
             margin: map-get($spacers,4) 0 0;
 
-            @include media-breakpoint-up(md){
+            @include media-breakpoint-up(lg){
                 flex: 1 1 40%;
-                padding: 0 0 0 map-get($spacers,4);
+                padding: 0 2rem 0 3rem;
             }
-
         }
+
+        .projectUrls{
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+        }
+
     }
 }

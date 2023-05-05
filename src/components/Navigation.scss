@@ -8,8 +8,16 @@
     background: transparent;
     display: flex;
     flex-direction: row-reverse;
-    margin-bottom: 130px;
+    margin-bottom: 170px;
     padding: map-get($spacers,3);
+
+    &.details-height{
+        margin-bottom: 1rem;
+
+        @include media-breakpoint-up(md){
+            margin-bottom: 3rem;
+        }
+    }
 
     &.active{
         background: white;
@@ -20,7 +28,7 @@
 
     @include media-breakpoint-up(md){
         flex-direction: row;
-        margin-bottom: 130px;
+        margin-bottom: 170px;
     }
 
     .mobile{

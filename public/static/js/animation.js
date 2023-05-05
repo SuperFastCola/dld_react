@@ -637,6 +637,10 @@
         this.loadSprites();
         this.keyEvents();
         this.resizeObserver.observe(document.body);
+
+        if(window.matchMedia('(max-width: 767px)').matches){
+            this.sprites.handyman.x = 0;
+        }
     }
 
     internal.loadSprites = internal.loadSprites.bind(internal);

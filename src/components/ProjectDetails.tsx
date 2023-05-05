@@ -57,10 +57,16 @@ class ProjectDetails extends React.Component<Properties,State> {
                         <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"description"} language={lang}/>
                         <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"role"} language={lang}/>
                         <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"tech"} language={lang}/>       
-                        <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"url"} language={lang}/>             
+                        <div className="projectUrls">
+                            <ProjectDetailItem item={project} labels={this.props.info.results.labels} infoType={"url"} language={lang}/>             
+                        </div>
                     </div>
+
+               
                 </div>
+
             </section>
+            
         )
     }
 

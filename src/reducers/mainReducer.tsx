@@ -54,6 +54,7 @@ const rootReducer = function (state = initialState, action) {
       return state;
 
     case "SET_MOBILE_MENU":
+      console.log(action);
       state = Object.assign({}, state, { mobileMenu: action.mobileMenu });
       return state;
 

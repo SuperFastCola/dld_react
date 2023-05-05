@@ -1,137 +1,135 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import "./Navigation.scss";
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Language from './Language';
 import NavigationLink from "./NavigationLink";
 import AboutLinks from './AboutLinks';
+import {setMobileMenu } from '../actions';
+import {useLocation } from 'react-router-dom';
 
-interface Properties {
-    info:{
-        language:string,
-        results: any,
-        mobileMenu: boolean,
-    };
-    setMobileMenu?(boolean):void;
-  
-};
 
-interface State{
-    height: string;
-}
+const Navigation = (props:any)=>{
+   
+    var observer = useRef(null);
+    var scrollObserver = useRef(null);
+    var timeoutObserver = useRef(null);
+    var windowSize = useRef(null);
 
-class Navigation extends React.Component<Properties, State> {
-    private windowSize: any;
-    private observer:ResizeObserver;
-    private scrollObserver = null;
-    private navRef: React.RefObject<HTMLDivElement>;
-    private timeoutObserver: any;
-    constructor(props){
-        super(props);
-        this.state = {height: "auto"};
-        this.toggelMenu = this.toggelMenu.bind(this);
-        this.addObserver = this.addObserver.bind(this);
-        this.checkDocumentScoll = this.checkDocumentScoll.bind(this);
-        this.delayObserver = this.delayObserver.bind(this);
-        this.windowSize = null;
-        this.navRef = React.createRef();
+    //get redux state
+    const info:any = useSelector((state:any) => state);
+    //redux dispatcher
+    const dispatch = useDispatch();
+
+    //store ref to nav in DOM
+    var navRef: React.RefObject<HTMLDivElement> = useRef(null);
+
+    //holds nav items
+    var navItems = [];
+
+    //gets canvas
+    var cityscape = document.getElementById("cityscape");
+
+    //using this keeps the navigation observer in place
+    let location = useLocation();
+
+
+    const delayObserver = ()=>{
+        timeoutObserver.current = setTimeout(addObserver,500);
     }
 
-    componentDidMount() {
-        // this.observer = new ResizeObserver(this.setNavHeight.bind(this));
-        // this.observer.observe(document.body);
-
-        if(this.scrollObserver==null){
-            this.scrollObserver = new IntersectionObserver(this.checkDocumentScoll,{
-                rootMargin: `-${this.navRef.current.offsetHeight}px 0px 0px 0px`
-            });
-            this.addObserver();
-        }
-
-    }
-
-    delayObserver(){
-        this.timeoutObserver = setTimeout(this.addObserver,50);
-    }
-
-    checkDocumentScoll(entries, observer){
-        if(this.navRef.current!=null){  
-            if(entries[0].isIntersecting){
-                this.navRef.current.classList.remove("bg-white", "border-bottom", "border-1", "shadow-sm");
+    const checkDocumentScoll = useCallback((entries)=>{
+        if(navRef.current!=null){  
+            if(entries[0].isIntersecting || entries[0].rootBounds===null){
+                navRef.current.classList.remove("bg-white", "border-bottom", "border-1", "shadow-sm");
             }
             else{
-                this.navRef.current.classList.add("bg-white", "border-bottom", "border-1", "shadow-sm");
-            }
+                navRef.current.classList.add("bg-white", "border-bottom", "border-1", "shadow-sm");
+            }  
         }
-    }
 
-    addObserver(){
-		this.scrollObserver.observe(document.querySelector("h1"));
-        this.timeoutObserver = null;
+    },[navRef]);
+
+    const addObserver = ()=>{
+
+        if(scrollObserver.current!==null){
+		    scrollObserver.current.observe(document.querySelector("h1"));
+            timeoutObserver.current = null;
+        }
+        else{
+            setScrollObserver();
+        }
 		return null;
 	}
 
-    setNavHeight(entries, observer){
-        if(typeof this.props.info.mobileMenu && window.matchMedia('(max-width: 767px)').matches){
-            if(this.state.height!==entries[0].contentRect.height){
-                this.windowSize = {
-                    height: String(entries[0].contentRect.height) + "px"
-                }            
-                this.setState({height: String(entries[0].contentRect.height)});
-            }
+    const setNavHeight = useCallback((entries) => {
+        if(typeof info.mobileMenu && window.matchMedia('(max-width: 767px)').matches){
+            windowSize.current = {
+                height: String(entries[0].contentRect.height) + "px"
+            }                      
         }
         else{
-            this.windowSize = null;
-            this.setState({height:"auto"});
+            windowSize.current = null;
+        }
+    },[info,windowSize]);
+
+    const toggelMenu = () => {
+        if(info.mobileMenu){
+            dispatch(setMobileMenu(false));
+        }
+        else{
+            dispatch(setMobileMenu(true));
         }
     }
 
-    toggelMenu(){
-        if(this.props.info.mobileMenu){
-            this.props.setMobileMenu(false);
+    const setScrollObserver= useCallback(()=>{
+        if(scrollObserver.current==null && navRef.current!==null){
+            scrollObserver.current = new IntersectionObserver(checkDocumentScoll,{
+                rootMargin: `-${navRef.current.offsetHeight * 2}px 0px 0px 0px`
+            });
+            scrollObserver.current.observe(document.querySelector("h1"));
         }
-        else{
-            this.props.setMobileMenu(true);
+    },[navRef,scrollObserver,checkDocumentScoll]);
+
+
+    useEffect(()=>{
+
+        if(observer.current==null){
+            observer.current = new ResizeObserver(setNavHeight);
+            observer.current.observe(document.body);
         }
+
+        setScrollObserver();
+
+        if(location.pathname!=="/"){
+            cityscape.classList.add("d-none");
+            navRef.current.classList.add("details-height");
+        }else{
+            cityscape.classList.remove("d-none");
+            navRef.current.classList.remove("details-height");
+        }
+
+    },[navRef,setNavHeight,setScrollObserver,cityscape,location])
+
+    if(timeoutObserver.current===null){
+        delayObserver();
     }
 
-   	render() {
-        var navItems = [];
+    if(info.results.types != null){
+        navItems = info.results.types.map((item,index) =>
+            <NavigationLink key={index} text={item[info.language]} type={item.type} />
+        );
+    }
 
-        if(this.timeoutObserver===null){
-            this.delayObserver();
-        }
-
-        if(this.props.info.results.types != null){
-            navItems = this.props.info.results.types.map((item,index) =>
-            <NavigationLink key={index} text={item[this.props.info.language]} type={item.type} />
-            );
-        }
-      
-        return(
-            <div ref={this.navRef} className={`${this.props.info.mobileMenu ? "navigation active": "navigation"}`} >
-                <div className="mobile navbar-light" onClick={()=>this.toggelMenu()}>
-                    <div className={this.props.info.mobileMenu ? "btn-close":"navbar-toggler-icon"}></div>
+   	return(
+            <div ref={navRef} className={`${info.mobileMenu ? "navigation active": "navigation"}`} >
+                <div className="mobile navbar-light" onClick={()=>toggelMenu()}>
+                    <div className={info.mobileMenu ? "btn-close":"navbar-toggler-icon"}></div>
                 </div>
-                <div style={this.windowSize} className={this.props.info.mobileMenu ? "nav-items active": "nav-items"}>{navItems}</div>
-                <AboutLinks links={this.props.info.results.contents[this.props.info.language]}/>
+                <div style={windowSize.current} className={info.mobileMenu ? "nav-items active": "nav-items"}>{navItems}</div>
+                <AboutLinks links={info.results.contents[info.language]}/>
                 <Language/>
             </div>
-        )
-        
-	    
-  }
+    )
 }
 
-const mapStateToProps = function(state){
-	return {"info":state};		
-}
-
-const mapDispatchToProps = function(dispatch) {
-    return({
-        setMobileMenu: (active) => {
-        	dispatch({type:"SET_MOBILE_MENU","mobileMenu":active})
-		},
-    })
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Navigation)
+export default Navigation;

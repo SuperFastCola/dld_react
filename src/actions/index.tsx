@@ -58,13 +58,11 @@
 
   export const setMobileMenu = active => {
     return {
-      type: 'SET_MOBILE_MENU'
+      type: 'SET_MOBILE_MENU',
+      "mobileMenu":active
     }
   }
 
-  export default {
-
-  }
   
   
   

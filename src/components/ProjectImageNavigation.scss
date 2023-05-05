@@ -4,11 +4,11 @@
 
     .page-item{
         .page-link{
-            border-radius: 1em;
+            border-radius: 0;
             color:black;
             padding: .65em;
             margin:0 map-get($spacers, 1 ) 0 0;
-            border-color: $gray-500;
+            border-color: black;
 
             @include media-breakpoint-up(md){
                 padding: map-get($spacers, 2 );
@@ -27,7 +27,7 @@
         &.active{
             .page-link{
                 color:black;
-                background-color: $gray-500;
+                background-color: black;
             }
         }
         

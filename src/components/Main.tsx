@@ -40,8 +40,8 @@ class App extends React.Component<Properties> {
 		if(this.props.info.results!=null){
 			return (
 				<div className="portfolio">
-					<Navigation/>
 					<Router>
+					<Navigation/>
 						<Routes>
 							<Route path="/" element={<Projects/>} />
 							<Route path="/:id" element={<ErrorBoundary><ProjectDetails /></ErrorBoundary>} />

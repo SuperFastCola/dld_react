@@ -36,12 +36,10 @@ class ProjectDetailItem extends React.Component<Properties> {
                     )
                     
                 case "url":
-
-                    console.log(item[infoType][lang]);
                     return (
-                        < div className='d-flex flex-column'>
-                        {item[infoType][lang].map((urlItem:any) =><a className="btn btn-secondary border mb-2" href={urlItem.link} target="new" role="button"  key={this.keyGen.createItemKey()}>{urlItem.text}</a>)}
-                        </div>
+                        <>
+                        {item[infoType][lang].map((urlItem:any) =><a href={urlItem.link} target="new" role="button"  key={this.keyGen.createItemKey()}>{urlItem.text}</a>)}
+                        </>
                     )
 
                 default:
