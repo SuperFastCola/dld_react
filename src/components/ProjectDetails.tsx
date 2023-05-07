@@ -47,7 +47,9 @@ class ProjectDetails extends React.Component<Properties,State> {
             <section className="projectDetails" style={this.setTop()}>
                 <div className="projectClose">
                     <h1>{project.name[lang]}</h1>
-                    <button type="button" className="btn-close" aria-label="Close" onClick={()=>this.closeDetails()}></button>
+                    <div className='btn-close-holder'>
+                        <button type="button" className="closer" aria-label="Close" onClick={()=>this.closeDetails()}><span></span></button>
+                    </div>
                 </div>
 
                 <div className="projectHolder">

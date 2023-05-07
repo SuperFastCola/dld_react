@@ -1,23 +1,59 @@
 @import "../vendor/bootstrap/scss/bootstrap-utilities";
 
-.projectUrls{
-    a{
-        background: transparent;
-        border-bottom:1px solid  $gray-400;
-        color: black;
-        text-align: left;
-        padding-left: 0rem;
-        border-left: 0;
-        border-right: 0;
-        padding: 1rem 0 .25rem 0rem;
-        display: block;
-        text-decoration: none;
-        font-weight: 600;
+.project-section{
+    margin-bottom: 2rem;
+}
 
-        &:hover{
+.projectUrls{
+
+    .project-section{
+        display: flex;
+        flex-direction: column;
+        
+        a{
+            background: transparent;
             color: black;
-            padding-left: 1rem;
-            transition: all .5s;
+            text-align: left;
+            padding: 0rem;
+            display: block;
+            text-decoration: none;
+            width: 80%;
+            color: red;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+
+            text-transform: lowercase;
+
+            margin-bottom: 1.5rem;
+            
+            font-weight: 800;
+            transition: all .1s;
+
+
+            &:after{
+                display: inline-block;
+
+                -webkit-transform: scale(1, 1.5); /* Safari and Chrome */
+                -moz-transform: scale(1, 1.5); /* Firefox */
+                -ms-transform: scale(1, 1.5); /* IE 9 */
+                -o-transform: scale(1, 1.5); /* Opera */
+                transform: scale(1, 1.5); /* W3C */
+                content: ">";
+                font-weight: 300;
+                position: relative;
+                margin-left: .5rem;
+                transition: all .1s;
+            }
+
+
+            &:hover{
+                color: black;
+                padding-left: 0rem;
+
+                &:after{
+                    margin-left: 1rem;
+                }
+            }
         }
     }
 }

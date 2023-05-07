@@ -26,9 +26,9 @@ class Language extends React.Component<Properties> {
     }
     setLabel(){
         if(this.props.info.language==="en"){
-            return "Français";
+            return "fr";
         }
-        return "English";
+        return "en";
     }
 	showLanguage(){
 		return (

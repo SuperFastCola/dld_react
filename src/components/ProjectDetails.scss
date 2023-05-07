@@ -15,21 +15,76 @@
         
         @include media-breakpoint-up(md){
             margin: 0 0 3rem 0;
-        }
-
-        @include media-breakpoint-up(md){
             align-items: flex-start;
-        }
-
-        @include media-breakpoint-up(md){
-            flex-direction: row;
+            flex-direction: column-reverse;
         }
         
+        
         h1{
-            flex-basis: 60%;
-
+            width: 100%;
+            
             @include media-breakpoint-up(lg){
-                flex-basis: 100%;
+                width: 50%;
+            }
+        }
+
+          
+        @keyframes moveleft {
+            from {
+                margin-left: 0px;
+            }
+            
+            to {
+                margin-left: -10px;
+            }
+        }
+
+        .btn-close-holder{
+            display: flex;
+            flex-grow: 1;
+            justify-content: flex-start;
+
+            .closer{
+                -webkit-appearance: none;
+                appearance: none;
+                background: transparent;
+                outline: 0;
+                border: 0;
+                margin-bottom: 1rem;
+                
+                span{
+                    &:after{    
+                        -webkit-transform: scale(1, 1.5); /* Safari and Chrome */
+                        -moz-transform: scale(1, 1.5); /* Firefox */
+                        -ms-transform: scale(1, 1.5); /* IE 9 */
+                        -o-transform: scale(1, 1.5); /* Opera */
+                        transform: scale(1, 1.5); /* W3C */
+                        content: "<<<";
+                        font-size: 3rem;
+                        line-height: 3rem;
+                        text-transform: uppercase;
+                        text-align: center;
+                        font-weight: 300;
+                        padding:0;
+                        border-radius: 2rem;
+                        color: red;
+                        outline: 0;
+                        display: inline-block;
+                    }
+                }
+
+                &:hover{
+                    span{
+
+                        animation-duration: .5s;
+                        animation-name: moveleft;
+                        animation-iteration-count: infinite;
+
+                        &:after{
+                            color: black;
+                        }
+                    }
+                }
             }
         }
 
@@ -66,6 +121,7 @@
                 flex: 1 1 40%;
                 padding: 0 2rem 0 3rem;
             }
+
         }
 
         .projectUrls{

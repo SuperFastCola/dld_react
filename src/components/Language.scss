@@ -9,8 +9,17 @@
         justify-content: flex-end;
         flex-grow: unset;
     }
+
     
     .btn{
         padding: 0px;
+        transition: all .1s;
+        font-weight: 800;
+        color: red;
+        font-size: 1.5rem;
+
+        &:hover{
+            color: black;
+        }
     }
 }

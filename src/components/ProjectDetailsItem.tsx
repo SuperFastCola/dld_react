@@ -23,31 +23,32 @@ class ProjectDetailItem extends React.Component<Properties> {
         var lang = this.props.language;
 
         if(item[infoType] !== undefined && item[infoType][lang] !== undefined && item[infoType][lang] !== null ){
+            console.log(infoType);
 
             switch(infoType){
                 case "tech":
                     return(
-                        <>
+                        <div className="project-section">
                             <h3>{labels[infoType][lang]}</h3>
                             <ul>
                                 {item[infoType][lang].map((tech, index) => (<li key={this.keyGen.createItemKey()}>{tech}</li>))} 
                             </ul>
-                        </>
+                        </div>
                     )
                     
                 case "url":
                     return (
-                        <>
+                        <div className="project-section">
                         {item[infoType][lang].map((urlItem:any) =><a href={urlItem.link} target="new" role="button"  key={this.keyGen.createItemKey()}>{urlItem.text}</a>)}
-                        </>
+                        </div>
                     )
 
                 default:
                     return(
-                        <>
-                            <h3>{labels[infoType][lang]}</h3>
-                            <p dangerouslySetInnerHTML={this.createMarkup(item[infoType][lang])}></p>
-                        </>
+                        <div className="project-section">
+                           <h3>{labels[infoType][lang]}</h3>
+                            <div dangerouslySetInnerHTML={this.createMarkup(item[infoType][lang])}></div>
+                        </div>
                     )
             }
         }

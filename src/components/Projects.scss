@@ -5,6 +5,7 @@
 
     h1{
         padding-top: map-get($spacers,3);
+        text-transform: lowercase;
     }
     .projectList{
         display: flex;

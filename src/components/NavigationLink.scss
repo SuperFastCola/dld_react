@@ -1,5 +1,6 @@
 @import "../vendor/bootstrap/scss/bootstrap-utilities";
 
+.navigation{
 button{
     border: 0px;
     background: transparent;
@@ -7,11 +8,17 @@ button{
     justify-content: center;
     padding: 0 map-get($spacers,1) 0 0;
 
+
     span{
         padding: map-get($spacers,2) 0;
         margin-bottom: map-get($spacers,3);
         flex-basis: 60%;
         border-radius: 2em;
+            
+        &:hover{
+            color: red;
+            transition: all .1s;
+        }
     }
 
     &.navigationLink.active{
@@ -32,7 +39,8 @@ button{
 
         &.navigationLink.active{
            
-            text-decoration: underline;
+            color: red;
+            font-weight: 800;
 
             span{
                 background: transparent;
@@ -42,5 +50,5 @@ button{
 
 
 
-
+}
 }

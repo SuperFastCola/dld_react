@@ -20,9 +20,12 @@
 
 .aboutLinks{
     display: flex;
+    align-items: center;
+    line-height: 1rem;
 
     .aboutText{
         display:none;
+        color:red;
 
         @include media-breakpoint-up(md){
             display:block;
@@ -41,6 +44,7 @@
             width: 30px;
             height: 30px;
             opacity: .9;
+            transition: all .15s;
 
             @include media-breakpoint-up(md){
                 width: 25px;
@@ -49,6 +53,14 @@
             background-position: center;
             background-size: 100% 100%;
         }
+
+        &:hover{
+            &:before{
+                opacity: .5;
+            }
+        }
+
+
         span{
             display:none;
         }

@@ -89,9 +89,9 @@ class ProjectSquare extends React.Component<Properties, State> {
  		return (
 	    	<article className="projectSquare" id={"projectSquare" + this.props["data-key"]} style={this.displayImage()} onClick={()=>this.toggleSquares(this.props.item)} ref={this.myRef}>
 				<div className="projectInside"  >
-					<div className="projectSquare-title" >
+					<h2 className="projectSquare-title" >
 						{this.props.item.name[this.props.info.language]}  
-					</div>
+					</h2>
 				</div>
 	    	</article>
 	    )

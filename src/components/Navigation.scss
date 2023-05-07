@@ -11,11 +11,20 @@
     margin-bottom: 170px;
     padding: map-get($spacers,3);
 
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 300;
+
+    @include media-breakpoint-up(md){
+        flex-direction: row;
+        margin-bottom: 170px;
+    }
+
+
     &.details-height{
         margin-bottom: 1rem;
 
         @include media-breakpoint-up(md){
-            margin-bottom: 3rem;
+            margin-bottom: 0rem;
         }
     }
 
@@ -26,10 +35,7 @@
         }    
     }
 
-    @include media-breakpoint-up(md){
-        flex-direction: row;
-        margin-bottom: 170px;
-    }
+
 
     .mobile{
         display: block;

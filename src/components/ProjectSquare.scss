@@ -8,11 +8,20 @@
     flex-wrap: wrap;
     position: relative;
     border: 1px solid $gray-600;
-    margin: map-get($spacers,2) map-get($spacers,1);
+    margin: map-get($spacers,2) map-get($spacers,4) map-get($spacers,2) 0 ;
 
     background-position: 0 0;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: all .25s;
+
+    &:hover{
+        cursor: pointer;
+        background-color: red;
+        background-blend-mode: multiply;
+    }
+
+
     
     
     &::before {
@@ -24,7 +33,7 @@
 
 
     @include media-breakpoint-up(sm){
-        flex: 0 0 48.5%;
+        flex: 0 0 35%;
         // border: 1px solid yellow;
 
         &::before {
@@ -33,34 +42,51 @@
     }
 
     @include media-breakpoint-up(md){
-        flex: 0 0 32.2%;
+        flex: 0 0 31%;
         // border: 1px solid pink;
     }
 
-    @include media-breakpoint-up(lg){
-        flex: 0 0 24.15%;
-        // border: 1px solid green;
-    }
+    // @include media-breakpoint-up(lg){
+    //     flex: 0 0 24.15%;
+    //     // border: 1px solid green;
+    // }
 
-    @include media-breakpoint-up(xl){
-        flex: 0 0 19.3%;
-        // border: 1px solid blue;
-    }
+    // @include media-breakpoint-up(xl){
+    //     flex: 0 0 19.3%;
+    //     // border: 1px solid blue;
+    // }
 
     .projectInside{
         display: flex;
         width: 100%;
         height: 100%;
-        position: absolute;
+        position: relative;
+        overflow: hidden;
+        clip: auto;
+
+        &:hover{
+            .projectSquare-title{
+                left: 0%;
+                transition: all .5s ease-in-out
+            }
+        }
     }
 
 
     .projectSquare-title{
         position: absolute;
-        bottom: 0px;
         width: 100%;
-        padding: 8px;
-        background-color: rgba(255,255,255,.9);
-        
+        height: 100%;
+        padding: 1rem;
+        left: 100%;
+        display: block;
+        font-weight: 800;
+        text-transform: none;
+
+        color: white;
+
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        border: 0;        
     }
 }
