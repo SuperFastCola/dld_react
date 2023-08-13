@@ -1,54 +1,76 @@
 @import "../vendor/bootstrap/scss/bootstrap-utilities";
 
 .navigation{
-button{
-    border: 0px;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    padding: 0 map-get($spacers,1) 0 0;
 
-
-    span{
-        padding: map-get($spacers,2) 0;
-        margin-bottom: map-get($spacers,3);
-        flex-basis: 60%;
-        border-radius: 2em;
-            
-        &:hover{
-            color: red;
-            transition: all .1s;
-        }
-    }
-
-    &.navigationLink.active{
-        span{
-            background: $gray-400;
-        }
-    }
-
-    @include media-breakpoint-up(md){
+    button{
+        border: 0px;
         background: transparent;
-        display: unset;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+
 
         span{
-            padding: 0 map-get($spacers,2) 0 0;
-            margin-bottom: unset;
-            flex-basis: unset;
+            padding: 0;
+            flex-basis: 100%;
+            margin-bottom: .5rem;
+            font-size: 2rem;
+            font-weight: 800;
+            color: red;
+
+
+            &:hover{
+                color: black;
+                transition: all .1s;
+            }
         }
 
-        &.navigationLink.active{
-           
-            color: red;
-            font-weight: 800;
+
+        @include media-breakpoint-up(md){
+            background: transparent;
+            display: unset;
 
             span{
-                background: transparent;
+                font-size: 1rem;
+                font-weight: 300;
+                padding: 0 map-get($spacers,2) 0 0;
+                margin-bottom: unset;
+                flex-basis: unset;
+                color: black;
+            }
+
+            &.active{
+                
+                span{
+                    color: red;
+                    font-weight: 800;
+                    background: transparent;
+                }
+            }
+
+            &:hover{
+                span{
+                    color: red;
+                }
             }
         }
     }
 
+    &.active{
+        .navigationLink.active{
+            span{
+                color: black;
+                
+                &:before{
+                    content: ">";
+                    margin-right: .5rem;
+                }
 
-
-}
+                &:after{
+                    content: "<";
+                    margin-left: .5rem;
+                }
+            }
+        }
+    }
 }

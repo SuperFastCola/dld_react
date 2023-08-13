@@ -75,7 +75,7 @@ class Projects extends React.Component<Properties> {
 		return (
 	    	<section className="projects">
 	    	<h1>{this.props.info.results.labels.projects[this.props.info.language]}</h1>
-            <h6>{this.showCategories()}</h6>
+            <h6 className="categories">{this.showCategories()}</h6>
             <div className="projectList">                
             {squares}
             </div>

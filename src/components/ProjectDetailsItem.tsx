@@ -23,7 +23,6 @@ class ProjectDetailItem extends React.Component<Properties> {
         var lang = this.props.language;
 
         if(item[infoType] !== undefined && item[infoType][lang] !== undefined && item[infoType][lang] !== null ){
-            console.log(infoType);
 
             switch(infoType){
                 case "tech":

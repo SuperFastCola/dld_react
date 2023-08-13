@@ -46,15 +46,17 @@ const rootReducer = function (state = initialState, action) {
           return item !== action.category && item !== 'all';
         })
       }
+      console.log(categories);
+      
       state = Object.assign({}, state, { category: categories });
       return state;
 
     case "SET_SEARCH_CATEGORY":
       state = Object.assign({}, state, { category: action.category });
+      console.log(action,state);
       return state;
 
     case "SET_MOBILE_MENU":
-      console.log(action);
       state = Object.assign({}, state, { mobileMenu: action.mobileMenu });
       return state;
 

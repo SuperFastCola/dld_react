@@ -8,7 +8,7 @@
             color:black;
             padding: .65em;
             margin:0 map-get($spacers, 1 ) 0 0;
-            border-color: black;
+            border-color: red;
 
             @include media-breakpoint-up(md){
                 padding: map-get($spacers, 2 );
@@ -20,14 +20,14 @@
             }
 
             &:hover{
-                color:$gray-500;
+                background-color:rgba(255,0,0,.2);
             }
         }
 
         &.active{
             .page-link{
-                color:black;
-                background-color: black;
+                color:red;
+                background-color: red;
             }
         }
         

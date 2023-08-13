@@ -18,7 +18,8 @@ interface Properties {
 		language:string,
 		results: any,
         error:null,
-        token: null
+        token: null,
+		mobileMenu:boolean
     };
     setResults(any):void;
 	setAjaxError(any):void;
@@ -30,16 +31,29 @@ class App extends React.Component<Properties> {
 	constructor(props) {
 		super(props);
 		this.ajaxError = this.ajaxError.bind(this);
+		this.setHeight = this.setHeight.bind(this);
 	}
 
 	componentDidMount() {
 		sendAjaxRequest(this.props.info.url,this.props.setResults,this.ajaxError);
 	}
 
+	setHeight(){
+		if(this.props.info.mobileMenu){
+			return {
+                height: `${window.innerHeight}px`,
+				overflow: 'hidden',
+            }      
+		}
+		else{
+			return null;
+		}
+	}
+
 	showApp(){
 		if(this.props.info.results!=null){
 			return (
-				<div className="portfolio">
+				<div className="portfolio" style={this.setHeight()}>
 					<Router>
 					<Navigation/>
 						<Routes>
@@ -60,6 +74,7 @@ class App extends React.Component<Properties> {
 		this.props.setAjaxError(textStatus);
 	}
 	render() {
+		console.log(this.props.info.mobileMenu);
 	    return this.showApp();
   }
 }
@@ -77,7 +92,6 @@ const mapStateToProps = function(state){
         	dispatch({type:"ALL"})
         },
         setAjaxError: (error) => {
-        	console.log("---",error);
         	dispatch({type:"SET_AJAX_ERROR","error":error})
         }
     })

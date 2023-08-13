@@ -7,6 +7,16 @@
         padding-top: map-get($spacers,3);
         text-transform: lowercase;
     }
+
+    .categories{
+        display: flex;
+
+        @include media-breakpoint-up(md){
+            display: none;
+        }
+    }
+
+
     .projectList{
         display: flex;
         flex-wrap: wrap;
